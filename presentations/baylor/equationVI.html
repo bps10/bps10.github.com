@@ -71,14 +71,14 @@
       <script>
           
           var margin = {top: 20, right: 50, bottom: 80, left: 100},
-          width = 960 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
+          width = 800 - margin.left - margin.right,
+          height = 425 - margin.top - margin.bottom;
 
           
           var x = d3.scale.linear()
           .range([10, width + 10]);
           
-          var y = d3.scale.linear()
+          var y = d3.scale.log()
           .range([height - 10, -10]);
           
           var xAxis = d3.svg.axis()
@@ -88,20 +88,21 @@
           
           var yAxis = d3.svg.axis()
           .scale(y)
+          .ticks(5)
           .orient("left");
          
           var a = [-5.2734, -87.403, 1228.4, -3346.3, -5070.3, 30881.0, -31607.0];
-          var lam_R = 561, lam_M = 530;
-          var xVal = d3.range(0.45,0.65,0.001);
+          var lam_R = 561, lam_M = 430;
+          var xVal = d3.range(0.38,0.75,0.0001);
 
           var yVal = function(lambda, lam_M, lam_R) {
                 var S = 0;
-                for (var n=0; n < a.length; n++) {                                
-                    S += (a[n] * Math.pow( (Math.log((1/lambda) * (lam_M/lam_R))),n) );
+                for (var n=0; n < 7; n++) {
+                    S += (a[n] * Math.pow( Math.log((1.0/lambda) * (lam_M/lam_R)),n) );
                     };
                 return S;
                 };
-
+          // normalize so that max is 1, then take the log and plot on linear scale.
           var data = [];
           for (i=0;  i < xVal.length; i++) {
               data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
@@ -151,15 +152,15 @@
 
           svg.append("path")
                  .datum(data)
-                 .attr("class", "line2")
-                 .attr("d", line2);  
+                 .attr("class", "line")
+                 .attr("d", line);
 
           svg.selectAll("text")
                  .data("1")
                  .append("text")
 
                  .text("500 nm");
-          
+          /*
           svg.append("path")
                  .datum(data)
                  .attr("class", "line3")
@@ -169,6 +170,7 @@
                  .datum(data)
                  .attr("class", "line")
                  .attr("d", line);
+           
 
           d3.select("body")
                 .append("div")
@@ -182,7 +184,7 @@
           d3.select(".inputholder").append("span")
                  .attr("id", "k_val")
                  .text("k = " + 2.77 * Math.pow(10,-4));
-        /*
+        
           d3.select("input").on("change", change);
           
           function change() {

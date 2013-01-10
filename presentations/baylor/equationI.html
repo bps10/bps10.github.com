@@ -61,7 +61,7 @@ label {
 .inputholder2 {
   position: absolute;
   top: 300px;
-  right: 500px;
+  right: 800px;
   font-size: 30px
 }
 
@@ -89,8 +89,8 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 
 
 d3.select("body")
-    .append("div")
-     .attr("class","inputholder1")
+    //.append("div")
+     //.attr("class","inputholder1")
     .append("input")
      .attr("id", "iT")
      .attr("type", "range")
@@ -102,6 +102,8 @@ d3.select("body")
      .text("Ac");
 
 d3.select("body")
+   //.append("div")
+   // .attr("class","inputholder2")
     .append("input")
      .attr("id", "aC")
      .attr("type", "range")
@@ -145,9 +147,10 @@ function change_iT() {
 
 function change_aC() {
     aC = this.value;
-    //d3.select(".inputholder2").append("span")
-    // .attr("id", "Ac_val")
-    // .text("Ac = " + d3.round(this.value,3));
+    /*d3.select(".Ac_val").remove()
+    d3.select(".inputholder2").append("span")
+     .attr("id", "Ac_val")
+     .text("Ac = " + d3.round(this.value,3));*/
     update();
 };
 
