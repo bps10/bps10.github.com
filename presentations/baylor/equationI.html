@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+@import url('slide.css');
+
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+label {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+}
+
+.notes {
+  position: absolute;
+  top: 150px;
+  right: 125px;
+  font-size: 22px;}
+#reset {
+  position: absolute;
+  top: 300px;
+  right: 725px;
+  width: 80px;
+  font-size: 18px;
+}
+
+#iT {
+  position: absolute;
+  top: 200px;
+  right: 700px;
+
+}
+
+#aC {
+  position: absolute;
+  top: 240px;
+  right: 700px;
+}
+
+.f_sol {
+  position: absolute;
+  top: 285px;
+  right: 715px;
+  font-size: 30px
+  font-color: red;
+};
+
+.inputholder1 {
+  position: absolute;
+  top: 200px;
+  right: 500px;
+  font-size: 30px
+}
+
+.inputholder2 {
+  position: absolute;
+  top: 300px;
+  right: 500px;
+  font-size: 30px
+}
+
+</style>
+
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+
+<body>
+    <h2 class="slideTitle"> equation 1: fraction bleached</h2>
+    <div class="JAX">
+      \[\begin{aligned}
+      {f  = 1-e^{-i_{t}a_{c}} }\\
+      \end{aligned} \]
+    </div>
+
+<script>
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+
+d3.select("body")
+    .append("div")
+     .attr("class","inputholder1")
+    .append("input")
+     .attr("id", "iT")
+     .attr("type", "range")
+     .attr("min", 1* Math.pow(10,14))
+     .attr("max", 9* Math.pow(10,14))
+     .attr("step", 1000)
+     .attr("value", 3 * Math.pow(10,14))
+     .append("text")
+     .text("Ac");
+
+d3.select("body")
+    .append("input")
+     .attr("id", "aC")
+     .attr("type", "range")
+     .attr("min", 1* Math.pow(10,-16.5))
+     .attr("max", 1* Math.pow(10,-15.9))
+     .attr("step", 1* Math.pow(10,-17.5))
+     .attr("value", 1 * Math.pow(10,-16));
+
+d3.select("#iT").on("change", change_iT);
+d3.select("#aC").on("change", change_aC);
+
+
+var aC = Math.pow(10,-16), iT = 3*Math.pow(10, 14);
+
+d3.select(".inputholder1").append("span")
+     .attr("id", "it_val")
+     .text("It = " + d3.round(iT,3));
+
+d3.select(".inputholder2").append("span")
+     .attr("id", "Ac_val")
+     .text("Ac = " + aC,3);
+
+var solution = function(iT,aC) {
+    return 1 - Math.pow(Math.E, -(iT*aC));
+};
+
+d3.select("body")
+    .data([1])
+    .append("text")
+    .attr("class", "f_sol")
+    .text("f: " + d3.round(solution(iT,aC),3));
+
+
+function change_iT() {
+    iT = this.value;
+    //d3.select(".inputholder1").append("span")
+    // .attr("id", "it_val")
+    // .text("It = " + (this.value,3);
+    update();
+};
+
+function change_aC() {
+    aC = this.value;
+    //d3.select(".inputholder2").append("span")
+    // .attr("id", "Ac_val")
+    // .text("Ac = " + d3.round(this.value,3));
+    update();
+};
+
+function update() {
+    d3.select(".f_sol").remove();
+    
+    d3.select("body")
+        .data([1])
+        .append("text")
+        .attr("class", "f_sol")
+        .text("f: " + d3.round(solution(iT,aC),3));
+};
+
+</script>
+<div class="notes">
+    <ul> Assumptions: </p>
+</body>
+</html>

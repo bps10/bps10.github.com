@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<style>
+    @import url('slide.css');
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      position: relative;
+      width: 960px;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+        font: 20px;
+    }
+
+    
+    text {
+        font: 20px sans-serif;
+    }
+    
+    .x.axis path {
+        display: none;
+    }
+    
+    .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+    .inputholder {
+        font-size: 24px;
+    }
+    .line2 {
+        fill: none;
+        stroke: gray;
+        stroke-width: 1.5px;
+    }
+    .line3  {
+        fill: none;
+        stroke: gray;
+        stroke-width: 1.5px;
+    }
+    #info {
+        font-size: 24px;}
+</style>
+
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" src="http://d3js.org/d3.v3.js"></script>
+</head>
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  <body>
+      <h1 class="slideTitle"> equation 6: spectral sensitivities </h1>
+    <div class="JAX">
+	  \[\begin{aligned}
+	  log(S) &amp; = \sum_{n=0}^{6} a_{n} [log(\frac{1}{\lambda} \frac{\lambda_{m}}{\lambda_{r}})]^{n},
+	  \end{aligned} \]
+	</div>
+      <script>
+          
+          var margin = {top: 20, right: 50, bottom: 80, left: 100},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
+
+          
+          var x = d3.scale.linear()
+          .range([10, width + 10]);
+          
+          var y = d3.scale.linear()
+          .range([height - 10, -10]);
+          
+          var xAxis = d3.svg.axis()
+          .scale(x)
+          .ticks(5)
+          .orient("bottom");
+          
+          var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left");
+         
+          var a = [-5.2734, -87.403, 1228.4, -3346.3, -5070.3, 30881.0, -31607.0];
+          var lam_R = 561, lam_M = 530;
+          var xVal = d3.range(0.45,0.65,0.001);
+
+          var yVal = function(lambda, lam_M, lam_R) {
+                var S = 0;
+                for (var n=0; n < a.length; n++) {                                
+                    S += (a[n] * Math.pow( (Math.log((1/lambda) * (lam_M/lam_R))),n) );
+                    };
+                return S;
+                };
+
+          var data = [];
+          for (i=0;  i < xVal.length; i++) {
+              data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
+          };
+          
+         
+          var line = d3.svg.line()
+          .x(function(d) { return x(d.x); })
+          .y(function(d) { return y(d.y); });
+
+          var line2 = d3.svg.line()
+          .x(function(d) { return x(d.x); })
+          .y(function(d) { return y(d.y); });
+          
+          var line3 = d3.svg.line()
+          .x(function(d) { return x(d.x); })
+          .y(function(d) { return y(d.y); });
+
+          var svg = d3.select("body").append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                 
+          x.domain(d3.extent(data, function(d) { return d.x; }));
+          y.domain(d3.extent(data, function(d) { return d.y; }));
+          
+          svg.append("g")
+                 .attr("class", "x axis")
+                 .attr("transform", "translate(0," + height + ")")
+                 .call(xAxis)
+                 .append("text")
+                 .attr("x", width / 2)
+                 .attr("y", 65)
+                 .text("wavenumber (um^-1)");
+                 
+          svg.append("g")
+                 .attr("class", "y axis")
+                 .call(yAxis)
+                 .append("text")
+                 .attr("transform", "rotate(-90)")
+                 .attr("y", 6)
+                 .attr("dy", ".71em")
+                 .style("text-anchor", "end")
+                 .text("log S");
+
+
+          svg.append("path")
+                 .datum(data)
+                 .attr("class", "line2")
+                 .attr("d", line2);  
+
+          svg.selectAll("text")
+                 .data("1")
+                 .append("text")
+
+                 .text("500 nm");
+          
+          svg.append("path")
+                 .datum(data)
+                 .attr("class", "line3")
+                 .attr("d", line3);    
+             
+          svg.append("path")
+                 .datum(data)
+                 .attr("class", "line")
+                 .attr("d", line);
+
+          d3.select("body")
+                .append("div")
+                 .attr("class","inputholder")
+                .append("input")
+                 .attr("type", "range")
+                 .attr("min", 1* Math.pow(10,-6))
+                 .attr("max", 1* Math.pow(10,-3))
+                 .attr("step", 0.00001)
+                 .attr("value", 2.77 * Math.pow(10,-4))
+          d3.select(".inputholder").append("span")
+                 .attr("id", "k_val")
+                 .text("k = " + 2.77 * Math.pow(10,-4));
+        /*
+          d3.select("input").on("change", change);
+          
+          function change() {
+                d3.select("#k_val").remove()         
+                d3.select(".inputholder").append("span")
+                 .attr("id", "k_val")
+                 .text("k = " + this.value);
+                
+                d3.select(".line").remove()
+                console.log(this.value);
+                
+                k = this.value;
+                var data = []
+
+                var data = [];
+                for (i=0;  i < xVal.length; i++) {
+                      data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
+                  };
+
+                svg.append("path")
+                 .datum(data)
+                 .attr("class", "line")
+                 .attr("d", line);
+            };
+          */
+          function log10(val) {
+              return Math.log(val) / Math.LN10;
+            }
+          </script>
+
+  </body>
+</html>

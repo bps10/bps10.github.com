@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+@import url('slide.css');
+
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 20px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+  fill-opacity: .9;
+}
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.line2 {
+    fill: none;
+    stroke: black;
+    stroke-width: 1.5px;
+}
+
+label {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+}
+
+
+.pipette {
+    fill: none;
+    stroke: black;
+    stroke-width: 3px;
+    shape-rendering: crispEdges;
+    }
+    
+.cone {
+    fill: green;
+    stroke: green;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.light {
+    fill: none;
+    stroke: #666;
+    stroke-width: 3px;
+}
+
+.filter {
+    fill: gray:
+    stroke: black
+    stroke-width: 3px}
+
+button#runButton {
+    left: 60px;
+    position: absolute;
+    font-size: 18px;
+    top: 500px;
+    width: 80px;
+}
+
+#pipetteLabel {
+    position: absolute;
+    top: 150px;
+    left: 290px;
+    font-size: 30px;
+}
+  
+#coneLabel {
+    position: absolute;
+    top: 500px;
+    left: 305px;
+    font-size: 30px;
+}
+ 
+#lightLabel {
+    position: absolute;
+    top: 300px;
+    left: 30px;
+    font-size: 30px;
+}
+
+#axis1label {
+    position: absolute;
+    top: 240px;
+    left: 690px;
+    font-size: 22px;
+}
+
+#axis2label {
+    position: absolute;
+    top: 540px;
+    left: 720px;
+    font-size: 22px;
+}
+ 
+ 
+</style>
+
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<body>
+    <h2 class="slideTitle"> experimental setup</h2>
+
+</body>
+<script>
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .range([height, 0]);
+    
+var y = d3.scale.linear()
+    .range([0,100]);
+    
+var x2 = d3.scale.linear()
+    .range([height, 0]);
+    
+var y2 = d3.scale.linear()
+    .range([0,100]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .ticks(5)
+    .orient("bottom");
+
+var xAxis2 = d3.svg.axis()
+    .scale(x)
+    .ticks(5)
+    .orient("bottom");
+    
+
+var randomNum = d3.random.normal(0, 10);
+
+var spikeGen = function() {
+    
+    var data = [];
+    
+    for (var i=0; i < 1000; i++) {
+        data.push({"x": i, "y": randomNum() });
+    };
+    return data;
+};
+
+var line = d3.svg.line()
+.x(function(d) { return x(d.x); })
+.y(function(d) { return y(d.y); });
+
+var line2 = d3.svg.line()
+.x(function(d) { return x(d.x); })
+.y(function(d) { return y(d.y); });
+
+var data = spikeGen(), data2 = [];   
+    
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    x.domain(d3.extent(data, function(d) { return d.x; }));
+    y.domain(d3.extent(data, function(d) { return d.y; }));
+
+    x2.domain(d3.extent(data, function(d) { return d.x; }));
+    y2.domain([0, 400]);
+    
+    d3.select("body").append("div")
+        .attr("class","Axis1Div");
+    
+    svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(500,100)")
+    .call(xAxis)
+    
+    d3.select("body").append("text")
+    .attr("id", "axis1label")
+    .text("cone response");
+
+    svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(500,400)")
+    .call(xAxis2)
+    
+    d3.select("body").append("text")
+    .attr("id", "axis2label")
+    .text("aggregate");
+    
+    // set up experimental aparatus
+    /*
+    svg.append("path")
+    .attr("class", "filter")
+    .attr('d', function(d) {
+          var x = 175, y = 225;
+          return 'M ' + x +' '+ y + ' l 10 0 l 0 150 l -10 0 z';
+          });
+    */
+    svg.append("path")
+    .attr("class", "pipette")
+    .attr('d', function(d) {
+          var x = 220, y = 50;
+          return 'M ' + x +' '+ y + ' l 150 0 l -40 300 l -70 0  z';
+          });
+
+    svg.append("path")
+    .attr("class", "cone")
+    .attr('d', function(d) {
+          var x = 320, y = 250;
+          return 'M ' + x +' '+ y + ' l -50 0 l 0 150 l 50 0 z';
+          });
+    
+
+    d3.select("body")
+    .append("text")
+     .attr("id", "pipetteLabel")
+     .style("text-anchor", "end")
+     .text("pipette");
+
+    d3.select("body")
+    .append("text")
+     .attr("transform", "rotate(-90)")
+     .attr("id", "coneLabel")
+     .style("text-anchor", "end")
+     .text("cone");
+
+    d3.select("body")
+    .append("text")
+     .attr("id", "lightLabel")
+     .style("text-anchor", "end")
+     .text("light source");
+
+    d3.select("body")
+        .append("button")
+        .attr("id", "runButton")
+        .attr("value", true)
+        .text("run");
+
+
+                  
+
+    (function() {
+     
+     svg.selectAll(".light")
+     .data([1])
+     .enter().append("circle")
+     .attr("class", "light")
+     .attr("cx", 60)
+     .attr("cy", 300)
+     .attr("r", 40);
+     
+     d3.select("#runButton").on("click", function() {
+                                
+                                var j = 0; //sum_data=0;
+                                function draw() {
+                                    svg.selectAll(".select").remove();
+                                    svg.select(".line").remove();
+                                
+                                    svg.selectAll(".select")
+                                     .data([1])
+                                     .enter().append("circle")
+                                     .attr("class", "select")
+                                     .attr("cx", 60)
+                                     .attr("cy", 300)
+                                     .attr("r", 40)
+                                     .style("stroke-width", 3)
+                                     .style("fill", "yellow")
+                                     .style("opacity", 1)
+                                     .transition()
+                                     .duration(1000)
+                                     .style("opacity", 0.001);
+                                
+                                    data = spikeGen();
+                                    maxD = d3.max(data);
+                                    data2.push({"x": Math.floor(Math.random() * 10), 
+                                                "y": maxD.y} );
+
+                                    svg.append("path")
+                                    .datum(data)
+                                    .attr("transform", "translate(500, -10)")
+                                    .attr("class", "line")
+                                    .attr("d", line);
+                                    
+                                    
+                                    svg.selectAll(".dot")
+                                          .data(data2)
+                                        .enter().append("circle")
+                                          .attr("class", "dot")
+                                          .attr("r", 3.5)
+                                          .attr("cx", function(d) { return x2(d.x) + 50; })
+                                          .attr("cy", function(d) { return y2(d.y) + 350; })
+                                          .style("fill", "steelblue");
+   
+                                    setTimeout(function(){
+                                        j++; if (j < 1000) { draw(); } },750);
+                                
+                                
+                                };
+                                draw()
+                                     });
+     })();
+    
+    
+    
+        </script>
+
+</html>
