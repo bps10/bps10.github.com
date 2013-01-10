@@ -27,11 +27,23 @@
         display: none;
     }
     
-    .line {
+    .redLine {
         fill: none;
-        stroke: steelblue;
+        stroke: red;
         stroke-width: 1.5px;
     }
+    
+    .greenLine {
+        fill: none;
+        stroke: green;
+        stroke-width: 1.5px;
+    }
+    .blueLine {
+        fill: none;
+        stroke: blue;
+        stroke-width: 1.5px;
+    }
+    
     .inputholder {
         font-size: 24px;
     }
@@ -71,15 +83,28 @@
       <script>
           
           var margin = {top: 20, right: 50, bottom: 80, left: 100},
-          width = 800 - margin.left - margin.right,
+          width = 725 - margin.left - margin.right,
           height = 425 - margin.top - margin.bottom;
 
           
           var x = d3.scale.linear()
-          .range([width + 10, 10]); //10, width + 10]);
+          .range([width + 30, 30]);
           
           var y = d3.scale.linear()
           .range([height - 10, -10]);
+ 
+          var x2 = d3.scale.linear()
+          .range([width + 30, 30]);
+          
+          var y2 = d3.scale.linear()
+          .range([height - 10, -10]);
+          
+          var x3 = d3.scale.linear()
+          .range([width + 30, 30]); 
+          
+          var y3 = d3.scale.linear()
+          .range([height - 10, -10]);
+          
           
           var xAxis = d3.svg.axis()
           .scale(x)
@@ -87,16 +112,18 @@
           .orient("bottom");
           
           var yAxis = d3.svg.axis()
-          .scale(y)
+          .scale(y2)
           .ticks(5)
           .orient("left");
          
+          
+          function genCurve(lam_M, lam_R) {
+              
+          //constants:
           var a = [-5.2734, -87.403, 1228.4, -3346.3, -5070.3, 30881.0, -31607.0];
-          var lam_R = 561.0, lam_M = 561.0;
           var xVal = d3.range(0.38,0.75,0.0001);
-          
-          // make this entire thing a function:
-          
+              
+          // nested function to find y values:
           var yVal = function(lambda, lam_M, lam_R) {
                 var S = 0;
                 for (var n=0; n < 7; n++) {
@@ -104,26 +131,31 @@
                     };
                 return S;
                 };
-          
-          // normalize so that max is 1, then take the log and plot on linear scale.
+              
+          // now use constants, input values and y value function to generate a curve:
           var data = [];
           for (i=0;  i < xVal.length; i++) {
               data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
           };
-          console.log(data);
+              return data;
+          };
           
+          redData = genCurve( 561.0, 561.0);
+          greenData = genCurve( 530.0, 561.0);
+          blueData = genCurve( 430.0, 561.0);
          
           var line = d3.svg.line()
           .x(function(d) { return x(d.x); })
           .y(function(d) { return y(d.y); });
 
           var line2 = d3.svg.line()
-          .x(function(d) { return x(d.x); })
-          .y(function(d) { return y(d.y); });
+          .x(function(d) { return x2(d.x); })
+          .y(function(d) { return y2(d.y); });
           
           var line3 = d3.svg.line()
-          .x(function(d) { return -x(d.x); })
-          .y(function(d) { return y(d.y); });
+          .x(function(d) { return x3(d.x); })
+          .y(function(d) { return y3(d.y); });
+          
 
           var svg = d3.select("body").append("svg")
           .attr("width", width + margin.left + margin.right)
@@ -131,15 +163,21 @@
           .append("g")
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                  
-          x.domain(d3.extent(data, function(d) { return d.x; }));
-          y.domain(d3.extent(data, function(d) { return d.y; }));
+          x.domain(d3.extent(redData, function(d) { return d.x; }));
+          y.domain(d3.extent(redData, function(d) { return d.y; }));
+
+          x2.domain(d3.extent(greenData, function(d) { return d.x; }));
+          y2.domain(d3.extent(greenData, function(d) { return d.y; }));
+          
+          x3.domain(d3.extent(blueData, function(d) { return d.x; }));
+          y3.domain(d3.extent(blueData, function(d) { return d.y; }));
           
           svg.append("g")
                  .attr("class", "x axis")
                  .attr("transform", "translate(0," + height + ")")
                  .call(xAxis)
                  .append("text")
-                 .attr("x", width / 2)
+                 .attr("x", (width - 30) / 2)
                  .attr("y", 65)
                  .text("wavenumber (um^-1)");
                  
@@ -155,11 +193,20 @@
 
 
           svg.append("path")
-                 .datum(data)
-                 .attr("class", "line")
-                 //.attr("transform","translate(690,0)")//," + height + ")")
+                 .datum(redData)
+                 .attr("class", "redLine")
                  .attr("d", line);
 
+          svg.append("path")
+                  .datum(greenData)
+                  .attr("class", "greenLine")
+                  .attr("d", line2);
+          
+          svg.append("path")
+                  .datum(blueData)
+                  .attr("class", "blueLine")
+                  .attr("d", line3);
+          
           svg.selectAll("text")
                  .data("1")
                  .append("text")

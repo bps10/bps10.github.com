@@ -110,10 +110,10 @@ button#runButton {
 #axis2label {
     position: absolute;
     top: 540px;
-    left: 720px;
+    left: 680px;
     font-size: 22px;
 }
- 
+
  
 </style>
 
@@ -138,10 +138,10 @@ var y = d3.scale.linear()
     .range([0,100]);
     
 var x2 = d3.scale.linear()
-    .range([height, 0]);
+    .range([0, height]);
     
 var y2 = d3.scale.linear()
-    .range([0,100]);
+    .range([150,1]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -149,12 +149,16 @@ var xAxis = d3.svg.axis()
     .orient("bottom");
 
 var xAxis2 = d3.svg.axis()
-    .scale(x)
+    .scale(x2)
     .ticks(5)
     .orient("bottom");
-    
 
-var randomNum = d3.random.normal(0, 10);
+var yAxis2 = d3.svg.axis()
+    .scale(y2)
+    .ticks(5)
+    .orient("left");
+
+var randomNum = d3.random.normal(0, 5);
 
 var spikeGen = function() {
     
@@ -185,11 +189,9 @@ var svg = d3.select("body").append("svg")
     x.domain(d3.extent(data, function(d) { return d.x; }));
     y.domain(d3.extent(data, function(d) { return d.y; }));
 
-    x2.domain(d3.extent(data, function(d) { return d.x; }));
-    y2.domain([0, 400]);
+    x2.domain([0,10]);
+    y2.domain([0,15]);
     
-    d3.select("body").append("div")
-        .attr("class","Axis1Div");
     
     svg.append("g")
     .attr("class", "x axis")
@@ -207,7 +209,17 @@ var svg = d3.select("body").append("svg")
     
     d3.select("body").append("text")
     .attr("id", "axis2label")
-    .text("aggregate");
+    .text("wavelength (nm)");
+
+    svg.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(490,235)")
+    .call(yAxis2);
+    
+    
+    //d3.select("body").append("text")
+    //.attr("id", "yaxis2label")
+    //.text("response");
     
     // set up experimental aparatus
     /*
@@ -295,7 +307,7 @@ var svg = d3.select("body").append("svg")
                                     data = spikeGen();
                                     maxD = d3.max(data);
                                     data2.push({"x": Math.floor(Math.random() * 10), 
-                                                "y": maxD.y} );
+                                                "y": Math.abs(maxD.y)} );
 
                                     svg.append("path")
                                     .datum(data)
@@ -309,8 +321,9 @@ var svg = d3.select("body").append("svg")
                                         .enter().append("circle")
                                           .attr("class", "dot")
                                           .attr("r", 3.5)
-                                          .attr("cx", function(d) { return x2(d.x) + 50; })
-                                          .attr("cy", function(d) { return y2(d.y) + 350; })
+                                          .attr("transform", "translate(500,235)")
+                                          .attr("cx", function(d) { return x2(d.x); })
+                                          .attr("cy", function(d) { return y2(d.y); })
                                           .style("fill", "steelblue");
    
                                     setTimeout(function(){
