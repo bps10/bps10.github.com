@@ -93,8 +93,10 @@
          
           var a = [-5.2734, -87.403, 1228.4, -3346.3, -5070.3, 30881.0, -31607.0];
           var lam_R = 561, lam_M = 430;
-          var xVal = d3.range(0.38,0.75,0.0001);
-
+          var xVal = d3.range(0.38,0.75,0.001);
+          
+          // make this entire thing a function:
+          
           var yVal = function(lambda, lam_M, lam_R) {
                 var S = 0;
                 for (var n=0; n < 7; n++) {
@@ -102,11 +104,23 @@
                     };
                 return S;
                 };
+          /*
+          var normY = [], foo = [];
+          for (i=0; i < xVal.length; i++) {
+              foo.push(yVal(xVal[i], lam_M, lam_R));
+          }
+          console.log(d3.min(foo));
+          var maxF = d3.max(foo);
+          for (i=0; i < foo.length; i++) {
+              normY.push(foo[i] / maxF);
+          }*/
+          
           // normalize so that max is 1, then take the log and plot on linear scale.
           var data = [];
           for (i=0;  i < xVal.length; i++) {
               data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
           };
+          console.log(data);
           
          
           var line = d3.svg.line()
