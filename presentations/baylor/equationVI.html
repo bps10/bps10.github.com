@@ -76,7 +76,7 @@
 
           
           var x = d3.scale.linear()
-          .range([10, width + 10]);
+          .range([width + 10, 10]); //10, width + 10]);
           
           var y = d3.scale.linear()
           .range([height - 10, -10]);
@@ -92,7 +92,7 @@
           .orient("left");
          
           var a = [-5.2734, -87.403, 1228.4, -3346.3, -5070.3, 30881.0, -31607.0];
-          var lam_R = 561.0, lam_M = 530.0;
+          var lam_R = 561.0, lam_M = 561.0;
           var xVal = d3.range(0.38,0.75,0.0001);
           
           // make this entire thing a function:
@@ -104,16 +104,6 @@
                     };
                 return S;
                 };
-          /*
-          var normY = [], foo = [];
-          for (i=0; i < xVal.length; i++) {
-              foo.push(yVal(xVal[i], lam_M, lam_R));
-          }
-          console.log(d3.min(foo));
-          var minF = d3.min(foo);
-          for (i=0; i < foo.length; i++) {
-              normY.push((foo[i] - minF) / -minF);
-          }*/
           
           // normalize so that max is 1, then take the log and plot on linear scale.
           var data = [];
@@ -132,7 +122,7 @@
           .y(function(d) { return y(d.y); });
           
           var line3 = d3.svg.line()
-          .x(function(d) { return x(d.x); })
+          .x(function(d) { return -x(d.x); })
           .y(function(d) { return y(d.y); });
 
           var svg = d3.select("body").append("svg")
@@ -167,6 +157,7 @@
           svg.append("path")
                  .datum(data)
                  .attr("class", "line")
+                 //.attr("transform","translate(690,0)")//," + height + ")")
                  .attr("d", line);
 
           svg.selectAll("text")
