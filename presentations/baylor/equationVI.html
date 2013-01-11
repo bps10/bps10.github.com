@@ -46,16 +46,11 @@
     
     .inputholder {
         font-size: 24px;
+        position: absolute;
+        top: 230px;
+        right: -150px;
     }
-    .line2 {
-        fill: none;
-        stroke: gray;
-        stroke-width: 1.5px;
-    }
-    .line3  {
-        fill: none;
-        stroke: gray;
-        stroke-width: 1.5px;
+
     }
     #info {
         font-size: 24px;}
@@ -149,12 +144,12 @@
           .y(function(d) { return y(d.y); });
 
           var line2 = d3.svg.line()
-          .x(function(d) { return x2(d.x); })
-          .y(function(d) { return y2(d.y); });
+          .x(function(d) { return x(d.x); })
+          .y(function(d) { return y(d.y); });
           
           var line3 = d3.svg.line()
-          .x(function(d) { return x3(d.x); })
-          .y(function(d) { return y3(d.y); });
+          .x(function(d) { return x(d.x); })
+          .y(function(d) { return y(d.y); });
           
 
           var svg = d3.select("body").append("svg")
@@ -206,65 +201,111 @@
                   .datum(blueData)
                   .attr("class", "blueLine")
                   .attr("d", line3);
-          
-          svg.selectAll("text")
-                 .data("1")
-                 .append("text")
-
-                 .text("500 nm");
-          /*
-          svg.append("path")
-                 .datum(data)
-                 .attr("class", "line3")
-                 .attr("d", line3);    
-             
-          svg.append("path")
-                 .datum(data)
-                 .attr("class", "line")
-                 .attr("d", line);
-           
 
           d3.select("body")
                 .append("div")
                  .attr("class","inputholder")
                 .append("input")
+                 .attr("id", "redInput")
                  .attr("type", "range")
-                 .attr("min", 1* Math.pow(10,-6))
-                 .attr("max", 1* Math.pow(10,-3))
-                 .attr("step", 0.00001)
-                 .attr("value", 2.77 * Math.pow(10,-4))
+                 .attr("min",430)
+                 .attr("max", 620)
+                 .attr("step", 1)
+                 .attr("value", 561);
+ 
           d3.select(".inputholder").append("span")
-                 .attr("id", "k_val")
-                 .text("k = " + 2.77 * Math.pow(10,-4));
-        
-          d3.select("input").on("change", change);
+              .attr("id", "red_val")
+              .style("color", "red")
+              .text("lambda_r: " + 561 + " nm");
+          d3.select(".inputholder").append("br");
           
-          function change() {
-                d3.select("#k_val").remove()         
-                d3.select(".inputholder").append("span")
-                 .attr("id", "k_val")
-                 .text("k = " + this.value);
-                
-                d3.select(".line").remove()
-                console.log(this.value);
-                
-                k = this.value;
-                var data = []
+          d3.select(".inputholder")
+                  .append("input")
+                  .attr("id", "greenInput")
+                  .attr("type", "range")
+                  .attr("min",430)
+                  .attr("max", 620)
+                  .attr("step", 1)
+                  .attr("value", 530);
+ 
+          d3.select(".inputholder").append("span")
+              .attr("id", "green_val")
+              .style("color", "green")
+              .text("lambda_r: " + 530 + " nm");
+          d3.select(".inputholder").append("br");
+          
+          
+          d3.select(".inputholder")
+                  .append("input")
+                  .attr("id", "blueInput")
+                  .attr("type", "range")
+                  .attr("min",430)
+                  .attr("max", 620)
+                  .attr("step", 1)
+                  .attr("value", 430);
+          
+          d3.select(".inputholder").append("span")
+              .attr("id", "blue_val")
+              .style("color", "blue")
+              .text("lambda_r:" + 430 + " nm");
+          d3.select(".inputholder").append("br");
 
-                var data = [];
-                for (i=0;  i < xVal.length; i++) {
-                      data.push({"x": 1/xVal[i], "y": yVal(xVal[i], lam_M, lam_R)});
-                  };
+          d3.select("#redInput").on("change", changeRed);
+          d3.select("#greenInput").on("change", changeGreen);
+          d3.select("#blueInput").on("change", changeBlue);
+          
+          function changeRed() {
+              d3.select(".redLine").remove();
+              //d3.select("#red_val").remove();
+                  
+              //d3.select(".inputholder").append("span")
+              // .style("color", "red")
+              // .text("lambda_r = " + this.value + " nm");
+                  
+              redData = genCurve( 561.0, this.value);
+              svg.append("path")
+              .datum(redData)
+              .attr("class", "redLine")
+              .attr("d", line);
+          };
 
-                svg.append("path")
-                 .datum(data)
-                 .attr("class", "line")
-                 .attr("d", line);
-            };
-          */
+
+          function changeGreen() {
+              d3.select(".greenLine").remove();
+              //d3.select("#green_val").remove();
+              
+              
+              //d3.select("id", "green_val")
+              //    .style("color", "green")
+              //    .text("lambda_r = " + this.value + " nm");
+                  
+
+              greenData = genCurve( 530.0, this.value);
+              svg.append("path")
+                  .datum(greenData)
+                  .attr("class", "greenLine")
+                  .attr("d", line2);
+          };
+          
+          function changeBlue() {
+              d3.select(".blueLine").remove();
+              //d3.select("#blue_val").remove();
+              
+              
+              //d3.select("id", "blue_val")
+              //.style("color", "blue")
+              //.text("lambda_r = " + this.value + " nm");
+              
+              blueData = genCurve( 430.0, this.value);
+              svg.append("path")
+                  .datum(blueData)
+                  .attr("class", "blueLine")
+                  .attr("d", line3);
+          };
+          
           function log10(val) {
               return Math.log(val) / Math.LN10;
-            }
+          };
           </script>
 
   </body>
