@@ -48,7 +48,7 @@
         font-size: 24px;
         position: absolute;
         top: 230px;
-        right: -150px;
+        right: -80px;
     }
 
     }
@@ -67,7 +67,11 @@
 <script type="text/javascript"
   src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
+<defs>
+  <clipPath id="clip">
+    <rect width="400" height="400"></rect>
+  </clipPath>
+</defs>
   <body>
       <h1 class="slideTitle"> equation 6: spectral sensitivities </h1>
     <div class="JAX">
@@ -167,6 +171,16 @@
           x3.domain(d3.extent(blueData, function(d) { return d.x; }));
           y3.domain(d3.extent(blueData, function(d) { return d.y; }));
           
+        svg.append("defs")
+            .attr("id", "clipper")
+            .append("path")
+            .style("stroke", "gray")
+            .style("fill", "black")
+            .attr("x", 50)
+            .attr("y", 25)
+            .attr("width", 300)
+            .attr("height", 45);
+
           svg.append("g")
                  .attr("class", "x axis")
                  .attr("transform", "translate(0," + height + ")")
@@ -200,6 +214,7 @@
           svg.append("path")
                   .datum(blueData)
                   .attr("class", "blueLine")
+                  .attr("clip-path", "url(#clip")
                   .attr("d", line3);
 
           d3.select("body")
@@ -230,7 +245,7 @@
                   .attr("min",430)
                   .attr("max", 620)
                   .attr("step", 1)
-                  .attr("value", 530);
+                  .attr("value", 561);
  
           d3.select(".inputholder").append("span")
               .attr("id", "green_text")
@@ -239,7 +254,7 @@
               .append("span")
               .attr("id", "green_val")
               .style("color", "green")
-              .text(561 + " nm");
+              .text(530 + " nm");
           d3.select(".inputholder").append("br");
           
           
@@ -250,7 +265,7 @@
                   .attr("min",430)
                   .attr("max", 620)
                   .attr("step", 1)
-                  .attr("value", 430);
+                  .attr("value", 561);
           
           d3.select(".inputholder").append("span")
               .attr("id", "blue_text")
@@ -259,7 +274,7 @@
               .append("span")
               .attr("id", "blue_val")
               .style("color", "blue")
-              .text(561 + " nm");
+              .text(430 + " nm");
           d3.select(".inputholder").append("br");
 
           d3.select("#redInput").on("change", changeRed);
@@ -312,6 +327,7 @@
               svg.append("path")
                   .datum(blueData)
                   .attr("class", "blueLine")
+                    .attr("clip-path", "url(#clip")
                   .attr("d", line3);
           };
           
