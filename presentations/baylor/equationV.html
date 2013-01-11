@@ -128,7 +128,7 @@
                  .append("text")
                  .attr("x", width / 2)
                  .attr("y", 65)
-                 .text("flash photon density (photons $um^-2$ )");
+                 .text("flash photon density (photons um^-2)");
                  
           svg.append("g")
                  .attr("class", "y axis")
@@ -145,8 +145,7 @@
                  .attr("class", "line2")
                  .attr("d", line2);  
 
-          svg.select("text")
-                 .data("1")
+          svg.append("path")
                  .append("text")
                  .text("500 nm");
 
@@ -169,6 +168,7 @@
                  .datum(data)
                  .attr("class", "line")
                  .attr("d", line);
+
 
           d3.select("body")
                 .append("div")

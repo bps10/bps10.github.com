@@ -214,9 +214,13 @@
                  .attr("value", 561);
  
           d3.select(".inputholder").append("span")
+              .attr("id", "red_text")
+              .style("color", "red")
+              .text("lambda_r: ")
+              .append("span")
               .attr("id", "red_val")
               .style("color", "red")
-              .text("lambda_r: " + 561 + " nm");
+              .text(561 + " nm");
           d3.select(".inputholder").append("br");
           
           d3.select(".inputholder")
@@ -229,9 +233,13 @@
                   .attr("value", 530);
  
           d3.select(".inputholder").append("span")
+              .attr("id", "green_text")
+              .style("color", "green")
+              .text("lambda_r: ")
+              .append("span")
               .attr("id", "green_val")
               .style("color", "green")
-              .text("lambda_r: " + 530 + " nm");
+              .text(561 + " nm");
           d3.select(".inputholder").append("br");
           
           
@@ -245,9 +253,13 @@
                   .attr("value", 430);
           
           d3.select(".inputholder").append("span")
+              .attr("id", "blue_text")
+              .style("color", "blue")
+              .text("lambda_r: ")
+              .append("span")
               .attr("id", "blue_val")
               .style("color", "blue")
-              .text("lambda_r:" + 430 + " nm");
+              .text(561 + " nm");
           d3.select(".inputholder").append("br");
 
           d3.select("#redInput").on("change", changeRed);
@@ -256,11 +268,12 @@
           
           function changeRed() {
               d3.select(".redLine").remove();
-              //d3.select("#red_val").remove();
+              d3.select("#red_val").remove();
                   
-              //d3.select(".inputholder").append("span")
-              // .style("color", "red")
-              // .text("lambda_r = " + this.value + " nm");
+              d3.select("#red_text").append("span")
+               .attr("id", "red_val")
+               .style("color", "red")
+               .text(this.value + " nm");
                   
               redData = genCurve( 561.0, this.value);
               svg.append("path")
@@ -272,14 +285,13 @@
 
           function changeGreen() {
               d3.select(".greenLine").remove();
-              //d3.select("#green_val").remove();
-              
-              
-              //d3.select("id", "green_val")
-              //    .style("color", "green")
-              //    .text("lambda_r = " + this.value + " nm");
+              d3.select("#green_val").remove();
                   
-
+              d3.select("#green_text").append("span")
+               .attr("id", "green_val")
+               .style("color", "green")
+               .text(this.value + " nm");
+                 
               greenData = genCurve( 530.0, this.value);
               svg.append("path")
                   .datum(greenData)
@@ -289,12 +301,12 @@
           
           function changeBlue() {
               d3.select(".blueLine").remove();
-              //d3.select("#blue_val").remove();
-              
-              
-              //d3.select("id", "blue_val")
-              //.style("color", "blue")
-              //.text("lambda_r = " + this.value + " nm");
+              d3.select("#blue_val").remove();
+                  
+              d3.select("#blue_text").append("span")
+               .attr("id", "blue_val")
+               .style("color", "blue")
+               .text(this.value + " nm");
               
               blueData = genCurve( 430.0, this.value);
               svg.append("path")
