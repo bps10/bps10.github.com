@@ -181,8 +181,11 @@
                  .attr("value", 9.7 * Math.pow(10,-5))
 
           d3.select(".inputholder").append("span")
-                 .attr("id", "k_val")
-                 .text("k = " + 9.7 * Math.pow(10,-5));
+              .attr("id", "k_text")
+              .text("$k$: ")
+              .append("span")
+              .attr("id", "k_val")
+              .text(9.7 * Math.pow(10,-5));
 
           d3.select("input").on("change", change);
           
@@ -190,7 +193,7 @@
                 d3.select("#k_val").remove()         
                 d3.select(".inputholder").append("span")
                  .attr("id", "k_val")
-                 .text("k = " + this.value);
+                 .text(this.value);
                 
                 d3.select(".line").remove()
                 console.log(this.value);

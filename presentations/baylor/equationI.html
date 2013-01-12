@@ -141,6 +141,10 @@ var solution = function(iT,aC) {
     return 1 - Math.pow(Math.E, -(iT*aC));
 };
 
+////////
+// set value to a var, then var.toExponential() will make it sci note. //
+///////
+
 d3.select("body")
     .data([1])
     .append("text")
