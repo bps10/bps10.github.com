@@ -167,9 +167,13 @@
           x3.domain(d3.extent(blueData, function(d) { return d.x; }));
           y3.domain(d3.extent(blueData, function(d) { return d.y; }));
 
-          svg.select("g").append("clipPath")
-                  .attr("id", "clip")
-                  .attr("points", "270,0 270,250 0,250 0,0" );
+          svg.append("svg:clipPath")
+          .attr("id", "clipper")
+          .append("svg:rect")
+          .attr("x", 0)
+          .attr("y", -100)
+          .attr("width", 600)
+          .attr("height", 420);
 
           svg.append("g")
                  .attr("class", "x axis")
@@ -194,17 +198,19 @@
           svg.append("path")
                  .datum(redData)
                  .attr("class", "redLine")
+                 .attr("clip-path", "url(#clipper)")
                  .attr("d", line);
 
           svg.append("path")
                   .datum(greenData)
                   .attr("class", "greenLine")
+                  .attr("clip-path", "url(#clipper)")
                   .attr("d", line2);
           
           svg.append("path")
                   .datum(blueData)
                   .attr("class", "blueLine")
-                  .attr("clip-path", "url(#clip")
+                  .attr("clip-path", "url(#clipper)")
                   .attr("d", line3);
 
           d3.select("body")
@@ -284,6 +290,7 @@
               svg.append("path")
               .datum(redData)
               .attr("class", "redLine")
+              .attr("clip-path", "url(#clipper)")
               .attr("d", line);
           };
 
@@ -301,6 +308,7 @@
               svg.append("path")
                   .datum(greenData)
                   .attr("class", "greenLine")
+                  .attr("clip-path", "url(#clipper)")
                   .attr("d", line2);
           };
           
@@ -317,7 +325,7 @@
               svg.append("path")
                   .datum(blueData)
                   .attr("class", "blueLine")
-                    .attr("clip-path", "url(#clip")
+                  .attr("clip-path", "url(#clipper)")
                   .attr("d", line3);
           };
           
