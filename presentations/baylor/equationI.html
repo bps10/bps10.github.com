@@ -51,19 +51,13 @@ label {
   font-color: red;
 };
 
-.inputholder1 {
+.inputholder {
   position: absolute;
   top: 200px;
   right: 500px;
   font-size: 30px
 }
 
-.inputholder2 {
-  position: absolute;
-  top: 300px;
-  right: 800px;
-  font-size: 30px
-}
 
 </style>
 
@@ -89,21 +83,27 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 
 
 d3.select("body")
-    //.append("div")
-     //.attr("class","inputholder1")
+    .append("div")
+     .attr("class","inputholder1")
     .append("input")
      .attr("id", "iT")
      .attr("type", "range")
      .attr("min", 1* Math.pow(10,14))
      .attr("max", 9* Math.pow(10,14))
      .attr("step", 1000)
-     .attr("value", 3 * Math.pow(10,14))
-     .append("text")
-     .text("Ac");
+     .attr("value", 3 * Math.pow(10,14));
+
+d3.select(".inputholder").append("span")
+  .attr("id", "red_text")
+  .style("color", "red")
+  .text("lambda_r: ")
+  .append("span")
+  .attr("id", "red_val")
+  .style("color", "red")
+  .text(561 + " nm");
+  d3.select(".inputholder").append("br");
 
 d3.select("body")
-   //.append("div")
-   // .attr("class","inputholder2")
     .append("input")
      .attr("id", "aC")
      .attr("type", "range")
@@ -111,6 +111,17 @@ d3.select("body")
      .attr("max", 1* Math.pow(10,-15.9))
      .attr("step", 1* Math.pow(10,-17.5))
      .attr("value", 1 * Math.pow(10,-16));
+
+d3.select(".inputholder").append("span")
+  .attr("id", "red_text")
+  .style("color", "red")
+  .text("lambda_r: ")
+  .append("span")
+  .attr("id", "red_val")
+  .style("color", "red")
+  .text(561 + " nm");
+  d3.select(".inputholder").append("br");
+
 
 d3.select("#iT").on("change", change_iT);
 d3.select("#aC").on("change", change_aC);

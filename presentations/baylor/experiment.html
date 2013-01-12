@@ -29,7 +29,7 @@ body {
 
 .line {
     fill: none;
-    stroke: steelblue;
+    stroke: black;
     stroke-width: 1.5px;
 }
 
@@ -132,16 +132,16 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
     height = 500 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
-    .range([height, 0]);
+    .range([0, height]);
     
 var y = d3.scale.linear()
-    .range([0,100]);
+    .range([100, 0]);
     
-var x2 = d3.scale.linear()
+var x2 = d3.scale.log()
     .range([0, height]);
     
 var y2 = d3.scale.linear()
-    .range([150,1]);
+    .range([150, 0]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -158,17 +158,24 @@ var yAxis2 = d3.svg.axis()
     .ticks(5)
     .orient("left");
 
-var randomNum = d3.random.normal(0, 5);
+var randomNum = d3.random.normal(0, 1.5);
 
 var spikeGen = function() {
-    
+    var trace = [0, 0, 0, 0, 0, 0, 10, 22, 23, 20, 10, 0, -4, -5, -3, -3, -2,
+                 -1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var data = [];
     
-    for (var i=0; i < 1000; i++) {
-        data.push({"x": i, "y": randomNum() });
+    for (var i=0; i < trace.length; i++) {
+        data.push({"x": i, "y": trace[i] + randomNum() });
     };
     return data;
 };
+
+var sigmoid = function(k, x) {
+    var R_m = 24;
+    return (R_m * ( 1 - Math.pow(Math.E,(-k*x))));
+};
+
 
 var line = d3.svg.line()
 .x(function(d) { return x(d.x); })
@@ -187,10 +194,10 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     x.domain(d3.extent(data, function(d) { return d.x; }));
-    y.domain(d3.extent(data, function(d) { return d.y; }));
+    y.domain([-10,30]);
 
-    x2.domain([0,10]);
-    y2.domain([0,15]);
+    x2.domain([Math.pow(10,2),Math.pow(10,6.6)]);
+    y2.domain([0,25]);
     
     
     svg.append("g")
@@ -200,7 +207,7 @@ var svg = d3.select("body").append("svg")
     
     d3.select("body").append("text")
     .attr("id", "axis1label")
-    .text("cone response");
+    .text("time");
 
     svg.append("g")
     .attr("class", "x axis")
@@ -209,7 +216,7 @@ var svg = d3.select("body").append("svg")
     
     d3.select("body").append("text")
     .attr("id", "axis2label")
-    .text("wavelength (nm)");
+    .text("flash photon density (photons um^-2)");
 
     svg.append("g")
     .attr("class", "y axis")
@@ -287,8 +294,19 @@ var svg = d3.select("body").append("svg")
      
      d3.select("#runButton").on("click", function() {
                                 
-                                var j = 0; //sum_data=0;
+                                var j = 0, n = 0, color = ["#00ff80", "#ff0000"],
+                                photons = [Math.pow(10,2),Math.pow(10,2.5),
+                                Math.pow(10,3), Math.pow(10,3.5), Math.pow(10,4), 
+                                Math.pow(10,4.5), Math.pow(10,5),
+                                Math.pow(10,5.5), Math.pow(10,6)];
+                        
+
+
                                 function draw() {
+                                    n = n < 9 ? n : 0;
+                                    col = j % 2.0 == 0 ? color[0] : color[1];
+                                    k = j % 2.0 == 0 ? 2.77*Math.pow(10,-4) : 3.01*Math.pow(10,-5);
+
                                     svg.selectAll(".select").remove();
                                     svg.select(".line").remove();
                                 
@@ -300,16 +318,17 @@ var svg = d3.select("body").append("svg")
                                      .attr("cy", 300)
                                      .attr("r", 40)
                                      .style("stroke-width", 3)
-                                     .style("fill", "yellow")
+                                     .style("fill", col) 
                                      .style("opacity", 1)
                                      .transition()
                                      .duration(1000)
                                      .style("opacity", 0.001);
                                 
                                     data = spikeGen();
-                                    maxD = d3.max(data);
-                                    data2.push({"x": Math.floor(Math.random() * 10), 
-                                                "y": Math.abs(maxD.y)} );
+                                    //maxD = d3.max(data);
+                                    console.log(sigmoid(k, photons[n]) + randomNum());
+                                    data2.push({"x": photons[n], 
+                                                "y": sigmoid(k, photons[n]) + randomNum() } );
 
                                     svg.append("path")
                                     .datum(data)
@@ -326,8 +345,9 @@ var svg = d3.select("body").append("svg")
                                           .attr("transform", "translate(500,235)")
                                           .attr("cx", function(d) { return x2(d.x); })
                                           .attr("cy", function(d) { return y2(d.y); })
-                                          .style("fill", "steelblue");
-   
+                                          .style("fill", col);
+
+                                    n++;
                                     setTimeout(function(){
                                         j++; if (j < 1000) { draw(); } },750);
                                 

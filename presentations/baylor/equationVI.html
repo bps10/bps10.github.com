@@ -67,11 +67,7 @@
 <script type="text/javascript"
   src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<defs>
-  <clipPath id="clip">
-    <rect width="400" height="400"></rect>
-  </clipPath>
-</defs>
+
   <body>
       <h1 class="slideTitle"> equation 6: spectral sensitivities </h1>
     <div class="JAX">
@@ -170,16 +166,10 @@
           
           x3.domain(d3.extent(blueData, function(d) { return d.x; }));
           y3.domain(d3.extent(blueData, function(d) { return d.y; }));
-          
-        svg.append("defs")
-            .attr("id", "clipper")
-            .append("path")
-            .style("stroke", "gray")
-            .style("fill", "black")
-            .attr("x", 50)
-            .attr("y", 25)
-            .attr("width", 300)
-            .attr("height", 45);
+
+          svg.select("g").append("clipPath")
+                  .attr("id", "clip")
+                  .attr("points", "270,0 270,250 0,250 0,0" );
 
           svg.append("g")
                  .attr("class", "x axis")
@@ -254,7 +244,7 @@
               .append("span")
               .attr("id", "green_val")
               .style("color", "green")
-              .text(530 + " nm");
+              .text(561 + " nm");
           d3.select(".inputholder").append("br");
           
           
@@ -274,7 +264,7 @@
               .append("span")
               .attr("id", "blue_val")
               .style("color", "blue")
-              .text(430 + " nm");
+              .text(561 + " nm");
           d3.select(".inputholder").append("br");
 
           d3.select("#redInput").on("change", changeRed);
