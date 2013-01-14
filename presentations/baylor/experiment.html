@@ -161,12 +161,12 @@ var yAxis2 = d3.svg.axis()
 var randomNum = d3.random.normal(0, 1.5);
 
 var spikeGen = function() {
-    var trace = [0, 0, 0, 0, 0, 0, 10, 22, 23, 20, 10, 0, -4, -5, -3, -3, -2,
-                 -1, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var trace = [0, 0, 0, 0, 0, 0, 10, 22, 23, 20, 10, 0, -4, -7, -3, -3, -2,
+                 -2, -1, 0, 0, 0, 0, 0, 0, 0];
     var data = [];
     
     for (var i=0; i < trace.length; i++) {
-        data.push({"x": i, "y": trace[i] + randomNum() });
+        data.push({"x": 2* i / 100.0, "y": trace[i] + randomNum() });
     };
     return data;
 };
@@ -207,7 +207,7 @@ var svg = d3.select("body").append("svg")
     
     d3.select("body").append("text")
     .attr("id", "axis1label")
-    .text("time");
+    .text("time (s)");
 
     svg.append("g")
     .attr("class", "x axis")
