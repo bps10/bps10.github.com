@@ -82,19 +82,19 @@
           height = 425 - margin.top - margin.bottom;
 
           
-          var x = d3.scale.linear()
+          var x = d3.scale.log()
           .range([width + 30, 30]);
           
           var y = d3.scale.linear()
           .range([height - 10, -10]);
  
-          var x2 = d3.scale.linear()
+          var x2 = d3.scale.log()
           .range([width + 30, 30]);
           
           var y2 = d3.scale.linear()
           .range([height - 10, -10]);
           
-          var x3 = d3.scale.linear()
+          var x3 = d3.scale.log()
           .range([width + 30, 30]); 
           
           var y3 = d3.scale.linear()
