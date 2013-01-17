@@ -103,7 +103,8 @@
           
           var xAxis = d3.svg.axis()
           .scale(x)
-          .ticks(5)
+          .tickFormat(d3.format("r,1"))
+          .tickValues([2.6, 2.4, 2.2, 2.0, 1.8, 1.6, 1.4])
           .orient("bottom");
           
           var yAxis = d3.svg.axis()
