@@ -15,11 +15,11 @@ from django.shortcuts import render_to_response
 def index(request):
     
     if request.method == 'POST':
-        c = {}
-        c.update(csrf(request))
-        t = loader.get_template('submitted.html')
+        #c = {}
+        c = RequestContext(request.POST, {})
+        template='submitted.html'
     
     if request.method == 'GET':
-        t = loader.get_template('input.html')
+        template = 'input.html'
         c = Context({})
-    return HttpResponse(t.render(c))
+    return render_to_response(template,c)
