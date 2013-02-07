@@ -1,1 +1,5 @@
 .DS_Store
+.ebextensions/
+/recipes/private/
+/recipes/recipes/settings.py
+*.pyc
