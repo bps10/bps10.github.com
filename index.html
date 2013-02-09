@@ -1,5 +1,108 @@
-<html>
-  <body>
-    <h1>perhaps you meant to end up <a href="http://bps10.github.com/presentations/talks/baylor545.html">here</a></h1>
-  </body>
-<html>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+    .subunit.NIR { display: none; }
+    .subunit.IRL { fill: #aaeebb; }
+
+    .subunit-boundary {
+        fill: none;
+        stroke: #777;
+        stroke-dasharray: 2,2;
+        stroke-linejoin: round;
+    }
+    
+    .subunit-boundary.NIR {
+        stroke: #aaa;
+    }
+    
+    .subunit-label {
+        fill: #777;
+        fill-opacity: .5;
+        font-size: 20px;
+        font-weight: 300;
+        text-anchor: middle;
+    }
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v0.min.js"></script>
+<script>
+
+    var width = 960,
+    height = 960;
+    
+    var projection = d3.geo.albers()
+    .center([0, 55.4])
+    .rotate([4.4, 0])
+    .parallels([50, 60])
+    .scale(1200 * 11)
+    .translate([width, 40]);
+    
+    var path = d3.geo.path()
+    .projection(projection);
+    
+    var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+    
+    d3.json("./maps/irl.json", function(error, irl) {
+            
+            var ireland = topojson.object(irl, irl.objects.subunits).geometries;
+            function filter(d) { return "this " + d.id; }
+            console.log(filter(ireland));
+            console.log(ireland);
+            
+            svg.selectAll(".subunit")
+            .data(topojson.object(irl, irl.objects.subunits).geometries)
+            .enter().append("path")
+            .attr("class", function(d) { return "subunit " + d.id; })
+            .attr("d", path);
+            
+            svg.append("path")
+            .datum(topojson.mesh(irl, irl.objects.subunits, function(a, b) { return a !== b && a.id !== "NIR"; }))
+            .attr("d", path)
+            .attr("class", "subunit-boundary");
+            
+            svg.append("path")
+            .datum(topojson.mesh(irl, irl.objects.subunits, function(a, b) { return a === b && a.id === "NIR"; }))
+            .attr("d", path)
+            .attr("class", "subunit-boundary IRL");
+            
+            svg.append("path")
+            .datum(topojson.object(irl, irl.objects.IRLplaces))
+            .attr("d", path)
+            .attr("class", "place");
+            
+            svg.selectAll(".place-label")
+            .data(topojson.object(irl, irl.objects.IRLplaces).geometries)
+            .enter().append("a")
+            .attr("class", function(d) { return "place-label-" + d.properties.name; })
+            .append("text")
+            
+            .attr("transform", function(d) { return "translate(" + projection(d.coordinates) + ")"; })
+            .attr("dy", ".35em")
+            .attr("dx", ".35em")
+            .text(function(d) { return d.properties.name; });
+            
+            svg.selectAll(".place-label")
+            .attr("x", function(d) { return d.coordinates[0] > -1 ? 6 : -6; })
+            .style("text-anchor", function(d) { return d.coordinates[0] > -1 ? "start" : "end"; });
+            
+            svg.selectAll(".subunit-label")
+            .data(topojson.object(irl, irl.objects.subunits).geometries)
+            .enter().append("text")
+            .attr("class", function(d) { return "subunit-label " + d.id; })
+            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+            .attr("dy", ".35em")
+            .text(function(d) { return d.properties.name; });
+            
+            svg.select(".place-label-Galway")
+            .attr("xlink:href","http://bps10.github.com/presentations/talks/baylor545.html");
+            
+            svg.select(".place-label-Killarney")
+            .attr("xlink:href","http://neitzmodel-env-mgmfmchs7y.elasticbeanstalk.com/");
+            });
+
+</script>
