@@ -1,112 +1,84 @@
 <!DOCTYPE html>
+<!--[if lt IE 7]>
+ <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+ <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+ <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+    <!--<![endif]-->
+<head>
+    
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>BPS | home</title>
+<meta name="viewport" content="width=device-width">
 <style>
-
-    .subunit.NIR { display: none; }
-    .subunit.IRL { fill: #aaeebb; }
-
-    .subunit-boundary {
-        fill: none;
-        stroke: #777;
-        stroke-dasharray: 2,2;
-        stroke-linejoin: round;
-    }
-    
-    .subunit-boundary.NIR {
-        stroke: #aaa;
-    }
-    
-    .subunit-label {
-        fill: #777;
-        fill-opacity: .5;
-        font-size: 20px;
-        font-weight: 300;
-        text-anchor: middle;
-    }
-
+    @import url('./static/css/bootstrap.min.css');
+    @import url('./static/css/main.css');
 </style>
+
+<script src="./static/js/jquery.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+
+</head>
+
 <body>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://d3js.org/topojson.v0.min.js"></script>
-<script>
+    <header class="jumbotron subhead">
+        <div class="container">
+            <h1><a href="index.html">empty space</a></h1>
+            <p>a project repo</p>
+        </div>
+    </header>
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li class="active" id="home">
+                    <a href="index.html">Home</a>
+                </li>
+                <li id="neitz">
+                    <a href="./pages/neitz.html">neitz lab</a>
+                </li>
+                <li>
+                    <a href="./pages/talks.html">talks</a>
+                </li>
+                <li id="tutorials">
+                    <a href="./pages/tutorials.html">tutorials</a>
+                </li>
+                <li id="side">
+                    <a href="./pages/side.html">side projects</a>
+                </li>
 
-    var width = 960,
-    height = 960;
+            </ul>
+            
+        </div>
+    </div>
     
-    var projection = d3.geo.albers()
-    .center([0, 55.4])
-    .rotate([4.4, 0])
-    .parallels([50, 60])
-    .scale(1200 * 11)
-    .translate([width, 40]);
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span10">
+                <article>
+                <h1>Note</h1>
+                This site is under development.
+                It's only current function is to house links to a few active projects.
+                </article>
+            </div>
+            <div class="span2">
+                <!--Sidebar content-->
+            </div>
+        </div>
+    </div>
     
-    var path = d3.geo.path()
-    .projection(projection);
-    
-    var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-    
-    d3.json("./maps/irl.json", function(error, irl) {
-            
-            var ireland = topojson.object(irl, irl.objects.subunits).geometries;
-            function filter(d) { return "this " + d.id; }
-            console.log(filter(ireland));
-            console.log(ireland);
-            
-            svg.selectAll(".subunit")
-            .data(topojson.object(irl, irl.objects.subunits).geometries)
-            .enter().append("path")
-            .attr("class", function(d) { return "subunit " + d.id; })
-            .attr("d", path);
-            
-            svg.append("path")
-            .datum(topojson.mesh(irl, irl.objects.subunits, function(a, b) { return a !== b && a.id !== "NIR"; }))
-            .attr("d", path)
-            .attr("class", "subunit-boundary");
-            
-            svg.append("path")
-            .datum(topojson.mesh(irl, irl.objects.subunits, function(a, b) { return a === b && a.id === "NIR"; }))
-            .attr("d", path)
-            .attr("class", "subunit-boundary IRL");
-            
-            svg.append("path")
-            .datum(topojson.object(irl, irl.objects.IRLplaces))
-            .attr("d", path)
-            .attr("class", "place");
-            
-            svg.selectAll(".place-label")
-            .data(topojson.object(irl, irl.objects.IRLplaces).geometries)
-            .enter().append("a")
-            .attr("class", function(d) { return "place-label-" + d.properties.name; })
-            .append("text")
-            
-            .attr("transform", function(d) { return "translate(" + projection(d.coordinates) + ")"; })
-            .attr("dy", ".35em")
-            .attr("dx", ".35em")
-            .text(function(d) { return d.properties.name; });
-            
-            svg.selectAll(".place-label")
-            .attr("x", function(d) { return d.coordinates[0] > -1 ? 6 : -6; })
-            .style("text-anchor", function(d) { return d.coordinates[0] > -1 ? "start" : "end"; });
-            
-            svg.selectAll(".subunit-label")
-            .data(topojson.object(irl, irl.objects.subunits).geometries)
-            .enter().append("text")
-            .attr("class", function(d) { return "subunit-label " + d.id; })
-            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-            .attr("dy", ".35em")
-            .text(function(d) { return d.properties.name; });
-            
-            svg.select(".place-label-Galway")
-            .attr("xlink:href","http://bps10.github.com/presentations/talks/baylor545.html");
-            
-            svg.select(".place-label-Killarney")
-            .attr("xlink:href","http://neitzmodel-env-mgmfmchs7y.elasticbeanstalk.com/");
-            });
-
-</script>
-
+    <div class="well well-small">
+        <div class="container">&copy; Copyright 2013, B.P. Schmidt
+        </div>
+    </div>
+    <!--! end of #container -->
+    <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
 </body>
 </html>
 
