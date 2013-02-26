@@ -3,3 +3,5 @@
 /recipes/private/
 /recipes/recipes/settings.py
 *.pyc
+.spyderproject
+.spyderworkspace

@@ -4,14 +4,6 @@ body {
   font-size: 38px;
 }
 
-h2 {
-  font-weight: bold;
-  font-family: "Helvetica Neue";
-  font-size: 40px;
-  border-left: 2px solid black;
-  padding-left: 20px;
-}
-
 .textSlide {
   padding: 50px 80px;
   font-size: 40px;
@@ -19,8 +11,7 @@ h2 {
 
 .slideTitle {
   position: relative;
-  top: 30px;
-  left: 40px;
+  margin: 1em 1em;
   font-weight: bold;
   font-family: "Helvetica Neue";
   font-size: 40px;
