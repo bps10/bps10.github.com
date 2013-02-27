@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<head>
+	<meta charset="utf-8">
+	<style>
 
-@import url('../../static/style/slide.css');
+	@import url('../../static/style/slide.css');
 
-#tritan {
-    position: fixed;
-    top: 170px;
-    left: 70px;}
+	#tritan {
+		position: fixed;
+		top: 120px;
+		left: 100px;
+		}
 
-#deutan {
-    position: fixed;
-    top: 640px;
-    left: 70px;
-	}
-    
-#protan {
-    position: fixed;
-    top: 170px;
-    left: 600px;}
+	#deutan {
+		position: fixed;
+		top: 120px;
+		left: 600px;
+		}
+		
+	#protan {
+		position: fixed;
+		top: 450px;
+		left: 100px;
+		}
 
-    
-</style>
+		
+	</style>
+	<script type="text/javascript" src="../../static/js/slide.js"></script>
+</head>
 
-
-  <body>
+  <body onload="formatImages(50.0);">
     <h2 class="slideTitle">confusion lines</h2>
     
-    <img src="../../static/figures/colorModel/tritan.png" id="tritan" height="385" width="500">
-    <img src="../../static/figures/colorModel/deutan.png" id="deutan" height="385" width="500">
-	<img src="../../static/figures/colorModel/protan.png" id="protan" height="385" width="500">	
+    <img src="../../static/figures/colorModel/tritan.png" id="tritan">
+    <img src="../../static/figures/colorModel/deutan.png" id="deutan">
+	<img src="../../static/figures/colorModel/protan.png" id="protan">	
 
   </body>
 </html>
