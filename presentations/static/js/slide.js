@@ -1,10 +1,13 @@
 slide = function() {
-	var slide = {version: "0.0.1"}, slide_document = document, slide_window = window;
+	var slide = {version: "0.0.1"}, 
+	slide_document = document, 
+	slide_window = window;
+
 	formatImages = function (percentage) {
 		for( i=0; i < document.images.length; i++)
 		{ 
-			width = document.images[i].width * percentage / 100.0;
-			height = document.images[i].height  * percentage / 100.0;
+			width = document.images[i].naturalWidth * percentage / 100.0;
+			height = document.images[i].naturalHeight  * percentage / 100.0;
 			
 			window.document.images[i].setAttribute("width",width);
 			window.document.images[i].setAttribute("height",height);
