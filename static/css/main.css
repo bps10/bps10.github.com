@@ -101,12 +101,26 @@ hr {
 
 
 iframe {
-    align: middle;
+    align: left;
     marginwidth: 0;
     marginheigh: 0;
     scrolling: no;
-    
+    width: 1200px;
+    border: 0;
     }
+iframe#colorSpace {
+    min-height: 1550px;
+    }
+    
+iframe#emmetropization {
+    min-height: 2200px;
+    }
+    
+aside {
+    margin: 1em;
+    left: 600px;
+    font-size: 14px;
+}
 
 /*
  * Remove default fieldset styles.
