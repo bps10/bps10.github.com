@@ -1,37 +1,87 @@
 #Stage 1
 ***
 
-$$\frac{LMS}{lens + macula}$$
+$$LMS = \frac{LMS}{lens + macula}$$
 
-![text](./presentations/static/figures/colorModel/fundamentals.png)
+<figure>
+  <img src="../presentations/static/figures/colorModel/fundamentals.png" alt="somethings"
+  width="400" height="300" style="margin: 0 auto;">
+</figure>
 
 #Stage 2
 ***
 
-$$L_{channel} = \int\_{i=390}^{750} w(q S\_{i} + (1-l) M\_{i} + l L\_{i}) - L\_{i} = 0$$
+$$L_{channel} = \int\_{\lambda=390}^{750} \Big(w(q S\_{\lambda} + (1-l) M\_{\lambda} + l L\_{\lambda}) - L\_{\lambda}\Big) d\lambda = 0$$
 
-$$M_{channel} = \int\_{i=390}^{750} w(q S\_{i} + (1-l) M\_{i} + l L\_{i}) - M\_{i} = 0$$
+$$M_{channel} = \int\_{\lambda=390}^{750} \Big(w(q S\_{\lambda} + (1-l) M\_{\lambda} + l L\_{\lambda}) - M\_{\lambda}\Big) d\lambda = 0$$
 
 ## 25% L
-![text](./presentations/static/figures/colorModel/familyLMS_25L.png)
+
+<figure>
+  <img src="../presentations/static/figures/colorModel/familyLMS_25L.png" alt="somethings"
+  width="425" height="400" style="margin: 0 auto;">
+</figure>
 
 ## 75% L
-![text](./presentations/static/figures/colorModel/familyLMS_75L.png)
+
+<figure>
+  <img src="../presentations/static/figures/colorModel/familyLMS_75L.png" alt="somethings"
+  width="425" height="400" style="margin: 0 auto;">
+</figure>
+
 
 #Stage 3
 ***
 
-$$Red:Green = \sum\_{m=0}^{100} \sum\_{l=0}^{100} L\_{channel\_{l,m}} * P(S|l)$$
+$$RG= \sum\_{m=0}^{100} \sum\_{l=0}^{100} L\_{channel\_{l,m}} * P(S|l)$$
 
-$$Blue:Yellow = \sum\_{m=0}^{100} \sum\_{l=0}^{100} M\_{channel\_{l,m}} * P(S|l)$$
+$$BY = \sum\_{m=0}^{100} \sum\_{l=0}^{100} M\_{channel\_{l,m}} * P(S|l)$$
 
-$$P(S|l) = \binom{n}{L} P\_{l}^{L} (1 - P\_{l})^{n - L},$$
+$$P(S|l) = \binom{n}{l} P\_{L}^{l} (1 - P\_{L})^{n - l},$$
 
-where $n = L + M$.
+where $n = l + m$.
+
+<figure>
+  <img src="../presentations/static/figures/colorModel/PercentL.png" alt="somethings"
+  width="425" height="550" style="margin: 0 auto;">
+</figure>
 
 
-![text](./presentations/static/figures/colorModel/PercentL.png)
-![text](./presentations/static/figures/colorModel/uniqueHues.png)
+
+<figure>
+  <img src="../presentations/static/figures/colorModel/uniqueHues.png" alt="somethings"
+  width="400" height="300" style="margin: 0 auto;">
+</figure>
+
+#Unique hues, LM ratio comparison
+***
+
+<figure>
+  <img src="../presentations/static/figures/colorModel/uniqueHues_LMcomparison_Volbrecht.png" alt="somethings"
+  width="425" height="550" style="margin: 0 auto;">
+</figure>
+
+
+<script type="text/javascript">
+
+	formatImages = function (percentage) {
+		console.log(document.images);
+		for( i=0; i < document.images.length; i++)
+		{ 
+			width = document.images[i].naturalWidth * percentage / 100.0;
+			height = document.images[i].naturalHeight  * percentage / 100.0;
+			
+			window.document.images[i].setAttribute("width",width);
+			window.document.images[i].setAttribute("height",height);
+
+		}
+		return window
+	};
+
+	console.log('here');
+	//formatImages(30);
+	console.log('here1');
+</script>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
         MathJax.Hub.Config({
