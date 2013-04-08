@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
 <style>
 
     @import url('../../static/style/slide.css');
 
 
-
 #LMS_25 {
         position: fixed;
-        top: 200px;
+        top: 300px;
         left: 50px;}		
 
 #LMS_75 {
         position: fixed;
-        top: 200px;
+        top: 300px;
         left: 550px;}	
 		
 </style>
+<script type="text/javascript" src="../../static/js/slide.js"></script>
+<script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
 
-  <body>
+  <body onload="formatImages(60.0);">
     <h2 class="slideTitle">second stage</h2>
       <div>
-        <img src="../../static/figures/colorModel/familyLMS_25L.png" id="LMS_25" height="480" width="510">
-        <img src="../../static/figures/colorModel/familyLMS_75L.png" id="LMS_75" height="480" width="510">
+        <div class="JAX">
+          \[\begin{equation}
+            g(\lambda) = w\big( q S(\lambda) + (1-r) M(\lambda) + r L(\lambda)\big) - L(\lambda) , \\
+            0 =  \int_{\lambda=390}^{750} g(\lambda)
+          \end{equation} \]
+        </div>
+
+        <img src="../../static/figures/colorModel/familyLMS_25L.png" id="LMS_25">
+        <img src="../../static/figures/colorModel/familyLMS_75L.png" id="LMS_75">
 	</div>
 
   </body>
