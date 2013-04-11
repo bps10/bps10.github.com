@@ -3,11 +3,19 @@
 ## Introduction
 ***
 
+#### Color spaces
+* How do we represent a spectrum of light in terms of perception.
+* We do this all the time in this lab, but don't necessarily think about it in formal terms.
+* Examples: Unique hues, 100 hue, anomaloscope, etc.
+* Can formally represent this in matrix notation. System A, brings us from Spectral Sensitivities to color matching functions.
+	* Color spaces. Why bother?
+	* Cone sensitivities now known.
+	* Predict color matching data.
+	* Fully specify colors.
+* Individual variability in color perception.
+
 #### Neitz space
-* Color spaces. Why bother?
-* Cone sensitivities now known.
-* Predict color matching data.
-* Fully specify colors.
+
 
 A series of linear transformations. Spare everyone the gory details ... for now!
 
@@ -36,4 +44,6 @@ Can we read cone ratios from this plot?
 
 #### Unique hues, failure of the 'Standard model'
 
-#### Neitz model: (S+M+L) - L
+#### Neitz model
+
+(S+M+L) - L and (S+M+L) - M 

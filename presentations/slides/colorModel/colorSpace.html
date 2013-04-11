@@ -27,23 +27,42 @@
   <body onload="formatImages(50.0);">
     <h2 class="slideTitle">color spaces</h2>
       <div class="JAX">
-          \[\begin{vmatrix}  
+          \[\begin{bmatrix}  
             l_r & l_g & l_b\\
             m_r & m_g & m_b\\
             s_r & s_g & s_b\\
-          \end{vmatrix}^{-1} \quad
-          \begin{vmatrix}  
+          \end{bmatrix}^{-1} \quad
+          \begin{bmatrix}  
             l(\lambda)\\
             m(\lambda)\\
             s(\lambda)\\
-          \end{vmatrix} =
-          \begin{vmatrix}  
+          \end{bmatrix} =
+          \begin{bmatrix}  
             r(\lambda)\\
             g(\lambda)\\
             b(\lambda)\\
-          \end{vmatrix}
+          \end{bmatrix}
         \]
-      </div
+      </div>
+      <div class="JAX">
+          \[\begin{bmatrix}  
+            l_r & l_g & l_b\\
+            m_r & m_g & m_b\\
+            s_r & s_g & s_b\\
+          \end{bmatrix} \quad
+          \begin{bmatrix}  
+            r(\lambda)\\
+            g(\lambda)\\
+            b(\lambda)\\
+          \end{bmatrix}
+		  =
+          \begin{bmatrix}  
+            l(\lambda)\\
+            m(\lambda)\\
+            s(\lambda)\\
+          \end{bmatrix}
+        \]
+      </div>
       <div>
         <!--<img src="../../static/figures/colorModel/PercentL.png" id="PercentL">-->
 	</div>
