@@ -16,6 +16,11 @@
 
 #### Neitz space
 
+* Color spaces. Why bother?
+	**Reveal regularities in data**
+* Cone sensitivities now known.
+* Predict color matching data.
+* Fully specify colors.
 
 A series of linear transformations. Spare everyone the gory details ... for now!
 
