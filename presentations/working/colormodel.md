@@ -17,6 +17,7 @@
 	* Predict color matching data.
 	* Fully specify colors.
 * Individual variability in color perception.
+* Most people think of color spaces in terms of representing color, with an antagonistic (or misinformed) view of the circuitry that actually processes color. We want to use color spaces to infer some principles about the underlying physiology.
 
 #### Neitz space
 
