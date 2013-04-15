@@ -14,59 +14,238 @@
     
     .JAX {
             position: relative;
-            top: 100px;
+            top: 500px;
             //left: 250px;
             }
-
+    svg {
+        position: fixed;
+        top: -50px;
+        left: 50px;
+    }
+    
+    .light {
+        fill: none;
+        stroke: #666;
+        stroke-width: 3px;
+    }
+    
+    .inputholder {
+        position: fixed;
+        top: 150px;
+        left: 100px;
+        }
+    
+    .matchLight {
+        position: absolute;
+        top: 200px;
+    }
+    
 </style>
 <script type="text/javascript" src="../../static/js/slide.js"></script>
 <script type="text/javascript"
   src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+<script type="text/javascript" src="../../static/js/d3.js"></script>
 </head>
-  <body onload="formatImages(50.0);">
-    <h2 class="slideTitle">color spaces</h2>
-      <!--<div class="JAX">
-          \[\begin{bmatrix}  
-            l_r & l_g & l_b\\
-            m_r & m_g & m_b\\
-            s_r & s_g & s_b\\
-          \end{bmatrix}^{-1} \quad
-          \begin{bmatrix}  
-            l(\lambda)\\
-            m(\lambda)\\
-            s(\lambda)\\
-          \end{bmatrix} =
-          \begin{bmatrix}  
-            r(\lambda)\\
-            g(\lambda)\\
-            b(\lambda)\\
-          \end{bmatrix}
-        \]
-      </div>-->
+<body onload="formatImages(50.0);">
+    <script>
+        var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
-      <div class="JAX">
-          \[\begin{bmatrix}  
-            l_r & l_g & l_b\\
-            m_r & m_g & m_b\\
-            s_r & s_g & s_b\\
-          \end{bmatrix} \quad
-          \begin{bmatrix}  
-            r(\lambda)\\
-            g(\lambda)\\
-            b(\lambda)\\
-          \end{bmatrix}
-		  =
-          \begin{bmatrix}  
-            l(\lambda)\\
-            m(\lambda)\\
-            s(\lambda)\\
-          \end{bmatrix}
-        \]
-      </div>
-      <div>
-        <!--<img src="../../static/figures/colorModel/PercentL.png" id="PercentL">-->
-	</div>
 
-  </body>
+        var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+         svg.selectAll(".light")
+         .data([1])
+         .enter().append("circle")
+         .attr("class", "light")
+         .attr("cx", 60)
+         .attr("cy", 300)
+         .attr("r", 40);
+         
+         d3.select("body")
+         .append("div")
+         .attr("class","inputholder")
+         .append("input")
+         .attr("id", "spectral")
+         .attr("type", "range")
+         .attr("min", 390)
+         .attr("max", 750)
+         .attr("step", 1)
+         .attr("value", 550)
+         
+         d3.select(".inputholder").append("span")
+         .attr("id", "light_text")
+         .text("$\\lambda$: ")
+         .append("span")
+         .attr("id", "light_val")
+         .text(550 + " nm");
+
+        svg.selectAll(".matchLight")
+        .data([1])
+        .enter().append("circle")
+        .attr("class", "matchLight")
+        .attr("cx", 60)
+        .attr("cy", 300)
+        .attr("r", 40);
+        
+        d3.select("body")
+        .append("div")
+        .attr("class","inputholder2")
+        .append("input")
+        .attr("id", "matchL")
+        .attr("type", "range")
+        .attr("min", -0.2)
+        .attr("max", 1)
+        .attr("step", 0.05)
+        .attr("value", 0)
+
+        d3.select(".inputholder2").append("span")
+        .attr("id", "L_text")
+        .text("L: ")
+        .append("span")
+        .attr("id", "matchL_val")
+        .text(0);
+        
+        d3.select("body")
+        .append("div")
+        .attr("class","inputholder2")
+        .append("input")
+        .attr("id", "matchM")
+        .attr("type", "range")
+        .attr("min", -0.2)
+        .attr("max", 1)
+        .attr("step", 0.05)
+        .attr("value", 0)
+
+        d3.select(".inputholder2").append("span")
+        .attr("id", "M_text")
+        .text("M: ")
+        .append("span")
+        .attr("id", "matchM_val")
+        .text(0);
+        
+        d3.select("body")
+        .append("div")
+        .attr("class","inputholder2")
+        .append("input")
+        .attr("id", "matchS")
+        .attr("type", "range")
+        .attr("min", -0.2)
+        .attr("max", 1)
+        .attr("step", 0.05)
+        .attr("value", 0)
+        
+        d3.select(".inputholder2").append("span")
+        .attr("id", "S_text")
+        .text("S: ")
+        .append("span")
+        .attr("id", "matchS_val")
+        .text(0);
+        
+         d3.select("#spectral").on("change", lightChange)
+         d3.select("#matchL").on("change", matchL)
+         d3.select("#matchM").on("change", matchM)
+         d3.select("#matchS").on("change", matchS)
+        
+        function matchL() {
+            col = "#00" + Math.round((this.value + 0.2) / 1.2);
+            console.log(col);
+            d3.selectAll(".matchLight").remove();
+            d3.selectAll("#matchL").remove();
+            
+            d3.select("#L_text").append("span")
+            .attr("id", "matchL_val")
+            .text("L " + this.value);
+            
+            svg.selectAll(".matchLight")
+            .data([1])
+            .enter().append("circle")
+            .attr("class", "matchLight")
+            .attr("cx", 60)
+            .attr("cy", 300)
+            .attr("r", 40)
+            .style("stroke-width", 3)
+            .style("fill", col)
+            .style("opacity", 1);
+        };
+        
+        function lightChange() {
+            col = "#0000" + Math.round((this.value - 390) / 360 * 100);
+            console.log(col);
+            d3.selectAll(".light").remove();
+            //d3.selectAll("#spectral").remove();
+            d3.selectAll("#light_val").remove();
+            //svg.select(".line").remove();
+    
+            d3.select("#light_text").append("span")
+            .attr("id", "light_val")
+            .text(this.value + " nm");
+
+            svg.selectAll(".light")
+            .data([1])
+            .enter().append("circle")
+            .attr("class", "light")
+            .attr("cx", 60)
+            .attr("cy", 300)
+            .attr("r", 40)
+            .style("stroke-width", 3)
+            .style("fill", col)
+            .style("opacity", 1);
+            };
+        
+        </script>
+
+<h2 class="slideTitle">color spaces</h2>
+  <!--<div class="JAX">
+      \[\begin{bmatrix}  
+        l_r & l_g & l_b\\
+        m_r & m_g & m_b\\
+        s_r & s_g & s_b\\
+      \end{bmatrix}^{-1} \quad
+      \begin{bmatrix}  
+        l(\lambda)\\
+        m(\lambda)\\
+        s(\lambda)\\
+      \end{bmatrix} =
+      \begin{bmatrix}  
+        r(\lambda)\\
+        g(\lambda)\\
+        b(\lambda)\\
+      \end{bmatrix}
+    \]
+  </div>-->
+
+  <div class="JAX">
+      \[\begin{bmatrix}  
+        l_r & l_g & l_b\\
+        m_r & m_g & m_b\\
+        s_r & s_g & s_b\\
+      \end{bmatrix} \quad
+      \begin{bmatrix}  
+        r(\lambda)\\
+        g(\lambda)\\
+        b(\lambda)\\
+      \end{bmatrix}
+      =
+      \begin{bmatrix}  
+        l(\lambda)\\
+        m(\lambda)\\
+        s(\lambda)\\
+      \end{bmatrix}
+    \]
+  </div>
+  <div>
+    <!--<img src="../../static/figures/colorModel/PercentL.png" id="PercentL">-->
+</div>
+
+</body>
 </html>
