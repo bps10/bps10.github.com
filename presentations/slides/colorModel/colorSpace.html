@@ -5,7 +5,9 @@
 
     @import url('../../static/style/slide.css');
 
-
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
 
     #PercentL {
             position: fixed;
@@ -14,32 +16,80 @@
     
     .JAX {
             position: relative;
-            top: 500px;
+            top: 525px;
             //left: 250px;
             }
+			
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+        font: 20px;
+    }
+
+    
+    text {
+        font: 16px sans-serif;
+    }
+
+    
+    .RLine {
+        fill: none;
+        stroke: red;
+        stroke-width: 1.5px;
+    }
+    .GLine {
+        fill: none;
+        stroke: green;
+        stroke-width: 1.5px;
+    }
+
+    .BLine {
+        fill: none;
+        stroke: blue;
+        stroke-width: 1.5px;
+    }
+	
+			
     svg {
         position: fixed;
         top: -50px;
-        left: 50px;
+        left: 100px;
     }
     
     .light {
         fill: none;
         stroke: #666;
-        stroke-width: 3px;
+        stroke-width: 2px;
     }
-    
+ 	
+    .matchLight {
+        fill: none;
+        stroke: #666;
+        stroke-width: 2px;
+    }
+       
     .inputholder {
         position: fixed;
-        top: 150px;
-        left: 100px;
-        }
-    
-    .matchLight {
-        position: absolute;
         top: 200px;
-    }
-    
+        left: 150px;
+		font-size: 20px;
+        }
+ 
+	.inputholder2 {
+		position: fixed;
+		top: 370px;
+		left: 150px;
+		font-size: 20px;
+	}
+
+	.inputholder3 {
+		position: fixed;
+		top: 570px;
+		left: 550px;
+		font-size: 20px;
+		}
 </style>
 <script type="text/javascript" src="../../static/js/slide.js"></script>
 <script type="text/javascript"
@@ -47,161 +97,419 @@
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-    </script>
+</script>
 <script type="text/javascript" src="../../static/js/d3.js"></script>
 </head>
 <body onload="formatImages(50.0);">
     <script>
         var margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 980 - margin.left - margin.right,
+        height = 650 - margin.top - margin.bottom;
 
+		var x = d3.scale.linear()
+		.range([30, 500 + 30]);
 
+		var y = d3.scale.linear()
+		.range([400 - 10, -10]);
+
+		var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+
+		var yAxis = d3.svg.axis()
+		.scale(y)
+		.ticks(5)
+		.orient("left");
+
+		var Rline = d3.svg.line()
+		.x(function(d) { return x(d.lambda); })
+		.y(function(d) { return y(d.R); });
+
+		var Gline = d3.svg.line()
+		.x(function(d) { return x(d.lambda); })
+		.y(function(d) { return y(d.G); });
+
+		var Bline = d3.svg.line()
+		.x(function(d) { return x(d.lambda); })
+		.y(function(d) { return y(d.B); });
+		
         var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-         svg.selectAll(".light")
-         .data([1])
-         .enter().append("circle")
-         .attr("class", "light")
-         .attr("cx", 60)
-         .attr("cy", 300)
-         .attr("r", 40);
-         
-         d3.select("body")
-         .append("div")
-         .attr("class","inputholder")
-         .append("input")
-         .attr("id", "spectral")
-         .attr("type", "range")
-         .attr("min", 390)
-         .attr("max", 750)
-         .attr("step", 1)
-         .attr("value", 550)
-         
-         d3.select(".inputholder").append("span")
-         .attr("id", "light_text")
-         .text("$\\lambda$: ")
-         .append("span")
-         .attr("id", "light_val")
-         .text(550 + " nm");
+		d3.tsv("../../static/data/neitz_CMFs.tsv", function(error, CMFs) {
+		  CMFs.forEach(function(d) {
+			d.R = +d.R;
+			d.G = +d.G;
+			d.B = +d.B;
+			d.lambda = +d.lambda;
+		  });
+  
+		console.log(CMFs);
+		
+		x.domain(d3.extent(CMFs, function(d) { return d.lambda; }));
+        y.domain(d3.extent(CMFs, function(d) { return d.R; }));
 
+		svg.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(390,550)")
+			.call(xAxis)
+			.append("text")
+			.attr("x", (500 - 30) / 2)
+			.attr("y", 65)
+			.text("wavelength (nm)");
+			 
+		svg.append("g")
+			.attr("class", "y axis")
+			.attr("transform", "translate(390,150)")
+			.call(yAxis)
+			.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("y", 6)
+			.attr("dy", ".71em")
+			.style("text-anchor", "end")
+			.text("intensity");
+
+		/*
+		svg.append("path")
+			.datum(CMFs)
+			.attr("transform", "translate(390,150)")
+			.attr("class", "RLine")
+			.attr("d", Rline);
+
+		svg.append("path")
+			.datum(CMFs)
+			.attr("transform", "translate(390,150)")
+			.attr("class", "GLine")
+			.attr("d", Gline);
+
+		svg.append("path")
+			.datum(CMFs)
+			.attr("transform", "translate(390,150)")
+			.attr("class", "BLine")
+			.attr("d", Bline);*/
+			 
+		// light:
+		svg.selectAll(".light")
+			.data([1])
+			.enter().append("circle")
+			.attr("class", "light")
+			.attr("cx", 60)
+			.attr("cy", 325)
+			.attr("r", 40);
+
+		d3.select("body")
+			.append("div")
+			.attr("class","inputholder")
+			.append("input")
+			.attr("id", "spectral")
+			.attr("type", "range")
+			.attr("min", 390)
+			.attr("max", 750)
+			.attr("step", 1)
+			.attr("value", 550);
+
+		d3.select(".inputholder").append("span")
+			.attr("id", "light_text")
+			.text("w: ")
+			.append("span")
+			.attr("id", "light_val")
+			.text(550 + " nm");
+		
+		// match light //
         svg.selectAll(".matchLight")
-        .data([1])
-        .enter().append("circle")
-        .attr("class", "matchLight")
-        .attr("cx", 60)
-        .attr("cy", 300)
-        .attr("r", 40);
+			.data([1])
+			.enter().append("circle")
+			.attr("class", "matchLight")
+			.attr("cx", 60)
+			.attr("cy", 325)
+			.attr("r", 40)
+			.attr("transform", "translate(100,0)");
         
         d3.select("body")
-        .append("div")
-        .attr("class","inputholder2")
-        .append("input")
-        .attr("id", "matchL")
-        .attr("type", "range")
-        .attr("min", -0.2)
-        .attr("max", 1)
-        .attr("step", 0.05)
-        .attr("value", 0)
+			.append("div")
+			.attr("class","inputholder2")
+			.append("input")
+			.attr("id", "matchR")
+			.attr("type", "range")
+			.attr("min", -0.5)
+			.attr("max", 1.8)
+			.attr("step", 0.02)
+			.attr("value", 0);
+		
+        d3.select(".inputholder2").append("span")
+			.attr("id", "R_text")
+			.text("R: ")
+			.append("span")
+			.attr("id", "matchR_val")
+			.text(0);
+        d3.select(".inputholder2").append("br");
+		
+        d3.select(".inputholder2")
+			.append("input")
+			.attr("id", "matchG")
+			.attr("type", "range")
+			.attr("min", -0.5)
+			.attr("max", 1.8)
+			.attr("step", 0.02)
+			.attr("value", 0);
+		
+        d3.select(".inputholder2").append("span")
+			.attr("id", "G_text")
+			.text("G: ")
+			.append("span")
+			.attr("id", "matchG_val")
+			.text(0);
+        d3.select(".inputholder2").append("br");
+		
+        d3.select(".inputholder2")
+			.append("input")
+			.attr("id", "matchB")
+			.attr("type", "range")
+			.attr("min", -0.5)
+			.attr("max", 1.8)
+			.attr("step", 0.02)
+			.attr("value", 0);
+        
+        d3.select(".inputholder2").append("span")
+			.attr("id", "B_text")
+			.text("B: ")
+			.append("span")
+			.attr("id", "matchB_val")
+			.text(0);
+			
+        d3.select("body")
+			.append("div")
+			.attr("class","inputholder3")
+			.append("input")
+			.attr("id", "showRGB")
+			.attr("type", "checkbox")
+		d3.select(".inputholder3").append("span")
+			.attr("transform", "translate(10,0)")
+			.text("cheat");
+        
+        
+		d3.select("#spectral").on("change", lightChange)
+		d3.select("#matchR").on("change", matchR)
+		d3.select("#matchG").on("change", matchG)
+		d3.select("#matchB").on("change", matchB)
+        d3.select("#showRGB").on("change", showRGB)
+		
+		var Rval = "00",
+			Gval = "00", 
+			Bval = "00",
+			Ramp = 0,
+			Gamp = 0,
+			Bamp = 0,
+			wavelength = 550,
+			checked = false;
+			RGBdata = [
+						[wavelength, Ramp, 'red'], 
+						[wavelength, Gamp, 'green'], 
+						[wavelength, Bamp, 'blue']];
 
-        d3.select(".inputholder2").append("span")
-        .attr("id", "L_text")
-        .text("L: ")
-        .append("span")
-        .attr("id", "matchL_val")
-        .text(0);
-        
-        d3.select("body")
-        .append("div")
-        .attr("class","inputholder2")
-        .append("input")
-        .attr("id", "matchM")
-        .attr("type", "range")
-        .attr("min", -0.2)
-        .attr("max", 1)
-        .attr("step", 0.05)
-        .attr("value", 0)
+		svg.selectAll("RGB")
+			.data(RGBdata)		
+			.enter().append("circle")
+			.attr("class", "RGB")
+			.attr("transform", "translate(390,150)")
+			.attr("cx", function(d) { return x(d[0]);})
+			.attr("cy", function(d) { return y(d[1]);})
+			.attr("r", 5)
+			.style("fill", function(d) { return d[2];});
 
-        d3.select(".inputholder2").append("span")
-        .attr("id", "M_text")
-        .text("M: ")
-        .append("span")
-        .attr("id", "matchM_val")
-        .text(0);
-        
-        d3.select("body")
-        .append("div")
-        .attr("class","inputholder2")
-        .append("input")
-        .attr("id", "matchS")
-        .attr("type", "range")
-        .attr("min", -0.2)
-        .attr("max", 1)
-        .attr("step", 0.05)
-        .attr("value", 0)
-        
-        d3.select(".inputholder2").append("span")
-        .attr("id", "S_text")
-        .text("S: ")
-        .append("span")
-        .attr("id", "matchS_val")
-        .text(0);
-        
-         d3.select("#spectral").on("change", lightChange)
-         d3.select("#matchL").on("change", matchL)
-         d3.select("#matchM").on("change", matchM)
-         d3.select("#matchS").on("change", matchS)
-        
-        function matchL() {
-            col = "#00" + Math.round((this.value + 0.2) / 1.2);
-            console.log(col);
+		function showRGB() {
+			if (checked == true) {
+				d3.selectAll(".RLine").remove();
+				d3.selectAll(".GLine").remove();
+				d3.selectAll(".BLine").remove();	
+				checked = false;}
+			else {
+				svg.append("path")
+					.datum(CMFs)
+					.attr("transform", "translate(390,150)")
+					.attr("class", "RLine")
+					.attr("d", Rline);
+
+				svg.append("path")
+					.datum(CMFs)
+					.attr("transform", "translate(390,150)")
+					.attr("class", "GLine")
+					.attr("d", Gline);
+
+				svg.append("path")
+					.datum(CMFs)
+					.attr("transform", "translate(390,150)")
+					.attr("class", "BLine")
+					.attr("d", Bline);	
+				checked = true;}
+
+		};
+		
+        function matchR() {
+			Ramp = parseFloat(this.value);
+			RGBdata = [
+						[wavelength, Ramp, 'red'], 
+						[wavelength, Gamp, 'green'], 
+						[wavelength, Bamp, 'blue']];
+			
+			Rval = Math.round(((Ramp + 0.5) / 2.3) * 100);
+            col = "#" + Rval + Gval + Bval;
             d3.selectAll(".matchLight").remove();
-            d3.selectAll("#matchL").remove();
+			d3.selectAll(".RGB").remove();
+            d3.selectAll("#matchR_val").remove();
             
-            d3.select("#L_text").append("span")
-            .attr("id", "matchL_val")
-            .text("L " + this.value);
+            d3.select("#R_text").append("span")
+				.attr("id", "matchR_val")
+				.text(Ramp);
             
             svg.selectAll(".matchLight")
-            .data([1])
-            .enter().append("circle")
-            .attr("class", "matchLight")
-            .attr("cx", 60)
-            .attr("cy", 300)
-            .attr("r", 40)
-            .style("stroke-width", 3)
-            .style("fill", col)
-            .style("opacity", 1);
+				.data([1])
+				.enter().append("circle")
+				.attr("class", "matchLight")
+				.attr("cx", 60)
+				.attr("cy", 325)
+				.attr("r", 40)
+				.attr("transform", "translate(100,0)")
+				.style("stroke-width", 3)
+				.style("fill", col)
+				.style("opacity", 1);
+			
+			svg.selectAll("RGB")
+				.data(RGBdata)		
+				.enter().append("circle")
+				.attr("class", "RGB")
+				.attr("transform", "translate(390,150)")
+				.attr("cx", function(d) { return x(d[0]);})
+				.attr("cy", function(d) { return y(d[1]);})
+				.attr("r", 5)
+				.style("fill", function(d) { return d[2];});
+			
         };
-        
+
+        function matchG() {
+			Gamp = parseFloat(this.value);
+			RGBdata = [
+						[wavelength, Ramp, 'red'], 
+						[wavelength, Gamp, 'green'], 
+						[wavelength, Bamp, 'blue']];
+			
+			Gval = Math.round(((Gamp + 0.5) / 2.3) * 100);
+            col = "#" + Rval + Gval + Bval;
+
+            d3.selectAll(".matchLight").remove();
+			d3.selectAll(".RGB").remove();
+            d3.selectAll("#matchG_val").remove();
+            
+            d3.select("#G_text").append("span")
+				.attr("id", "matchG_val")
+				.text(Gamp);
+            
+            svg.selectAll(".matchLight")
+				.data([1])
+				.enter().append("circle")
+				.attr("class", "matchLight")
+				.attr("cx", 60)
+				.attr("cy", 325)
+				.attr("r", 40)
+				.attr("transform", "translate(100,0)")
+				.style("stroke-width", 3)
+				.style("fill", col)
+				.style("opacity", 1);
+			
+			svg.selectAll("RGB")
+				.data(RGBdata)		
+				.enter().append("circle")
+				.attr("class", "RGB")
+				.attr("transform", "translate(390,150)")
+				.attr("cx", function(d) { return x(d[0]);})
+				.attr("cy", function(d) { return y(d[1]);})
+				.attr("r", 5)
+				.style("fill", function(d) { return d[2];});
+        };
+
+        function matchB() {
+			Bamp = parseFloat(this.value);
+			RGBdata = [
+						[wavelength, Ramp, 'red'], 
+						[wavelength, Gamp, 'green'], 
+						[wavelength, Bamp, 'blue']];
+
+			Bval = Math.round(((Bamp + 0.5) / 2.3) * 100);
+            col = "#" + Rval + Gval + Bval;
+
+            d3.selectAll(".matchLight").remove();
+			d3.selectAll(".RGB").remove();
+            d3.selectAll("#matchB_val").remove();
+            
+            d3.select("#B_text").append("span")
+				.attr("id", "matchB_val")
+				.text(Bamp);
+            
+            svg.selectAll(".matchLight")
+				.data([1])
+				.enter().append("circle")
+				.attr("class", "matchLight")
+				.attr("cx", 60)
+				.attr("cy", 325)
+				.attr("r", 40)
+				.attr("transform", "translate(100,0)")
+				.style("stroke-width", 3)
+				.style("fill", col)
+				.style("opacity", 1);
+			
+			svg.selectAll("RGB")
+				.data(RGBdata)		
+				.enter().append("circle")
+				.attr("class", "RGB")
+				.attr("transform", "translate(390,150)")
+				.attr("cx", function(d) { return x(d[0]);})
+				.attr("cy", function(d) { return y(d[1]);})
+				.attr("r", 5)
+				.style("fill", function(d) { return d[2];});
+        };
+		
         function lightChange() {
+			wavelength = parseFloat(this.value);
+			RGBdata = [
+						[wavelength, Ramp, 'red'], 
+						[wavelength, Gamp, 'green'], 
+						[wavelength, Bamp, 'blue']];
+			
             col = "#0000" + Math.round((this.value - 390) / 360 * 100);
-            console.log(col);
+
             d3.selectAll(".light").remove();
-            //d3.selectAll("#spectral").remove();
             d3.selectAll("#light_val").remove();
-            //svg.select(".line").remove();
+            d3.selectAll(".RGB").remove();
     
             d3.select("#light_text").append("span")
-            .attr("id", "light_val")
-            .text(this.value + " nm");
+				.attr("id", "light_val")
+				.text(this.value + " nm");
 
             svg.selectAll(".light")
-            .data([1])
-            .enter().append("circle")
-            .attr("class", "light")
-            .attr("cx", 60)
-            .attr("cy", 300)
-            .attr("r", 40)
-            .style("stroke-width", 3)
-            .style("fill", col)
-            .style("opacity", 1);
-            };
-        
+				.data([1])
+				.enter().append("circle")
+				.attr("class", "light")
+				.attr("cx", 60)
+				.attr("cy", 325)
+				.attr("r", 40)
+				.style("stroke-width", 3)
+				.style("fill", col)
+				.style("opacity", 1);
+
+			svg.selectAll("RGB")
+				.data(RGBdata)		
+				.enter().append("circle")
+				.attr("class", "RGB")
+				.attr("transform", "translate(390,150)")
+				.attr("cx", function(d) { return x(d[0]);})
+				.attr("cy", function(d) { return y(d[1]);})
+				.attr("r", 5)
+				.style("fill", function(d) { return d[2];});
+			};	
+		});
         </script>
 
 <h2 class="slideTitle">color spaces</h2>
