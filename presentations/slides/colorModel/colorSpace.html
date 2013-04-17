@@ -79,7 +79,7 @@
  
 	.inputholder2 {
 		position: fixed;
-		top: 370px;
+		top: 420px;
 		left: 150px;
 		font-size: 20px;
 	}
@@ -92,12 +92,11 @@
 		}
 </style>
 <script type="text/javascript" src="../../static/js/slide.js"></script>
-<script type="text/javascript"
-  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
 <script type="text/javascript" src="../../static/js/d3.js"></script>
 </head>
 <body onload="formatImages(50.0);">
@@ -137,13 +136,41 @@
 			Gamp = 0,
 			Bamp = 0,
 			wavelength = 550;
-		
+
         var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+		// light:
+		svg.selectAll(".light")
+        .data([1])
+        .enter().append("circle")
+        .attr("class", "light")
+        .attr("cx", 60)
+        .attr("cy", 350)
+        .attr("r", 40)
+        .style("fill", wavelength_to_RGB(550));
+        
+		d3.select("body")
+        .append("div")
+        .attr("class","inputholder")
+        .append("input")
+        .attr("id", "spectral")
+        .attr("type", "range")
+        .attr("min", 390)
+        .attr("max", 750)
+        .attr("step", 1)
+        .attr("value", 550);
+        
+		d3.select(".inputholder").append("span")
+        .attr("id", "light_text")
+        .text("$\\lambda$: ")
+        .append("span")
+        .attr("id", "light_val")
+        .text(550 + " nm");
+        
 		d3.tsv("../../static/data/neitz_CMFs.tsv", function(error, CMFs) {
 		  CMFs.forEach(function(d) {
 			d.R = +d.R;
@@ -178,34 +205,6 @@
 			.attr("dy", ".71em")
 			.style("text-anchor", "end")
 			.text("intensity");
-
-		// light:
-		svg.selectAll(".light")
-			.data([1])
-			.enter().append("circle")
-			.attr("class", "light")
-			.attr("cx", 60)
-			.attr("cy", 350)
-			.attr("r", 40)
-            .style("fill", wavelength_to_RGB(550));
-
-		d3.select("body")
-			.append("div")
-			.attr("class","inputholder")
-			.append("input")
-			.attr("id", "spectral")
-			.attr("type", "range")
-			.attr("min", 390)
-			.attr("max", 750)
-			.attr("step", 1)
-			.attr("value", 550);
-
-		d3.select(".inputholder").append("span")
-			.attr("id", "light_text")
-			.text("w: ")
-			.append("span")
-			.attr("id", "light_val")
-			.text(550 + " nm");
 		
 		// match light //
         svg.selectAll(".matchLight")
@@ -216,7 +215,7 @@
 			.attr("cy", 350)
 			.attr("r", 40)
 			.attr("transform", "translate(100,0)")
-            .style("fill", d3.rgb(normRGB(0, "R"),normRGB(0, "G"),normRGB(0, "B")));
+            .style("fill", d3.rgb(0,0,0));
         
         d3.select("body")
 			.append("div")
@@ -231,6 +230,7 @@
 		
         d3.select(".inputholder2").append("span")
 			.attr("id", "R_text")
+            .style("color", "red")
 			.text(" R: ")
 			.append("span")
 			.attr("id", "matchR_val")
@@ -248,6 +248,7 @@
 		
         d3.select(".inputholder2").append("span")
 			.attr("id", "G_text")
+            .style("color", "green")
 			.text(" G: ")
 			.append("span")
 			.attr("id", "matchG_val")
@@ -265,6 +266,7 @@
         
         d3.select(".inputholder2").append("span")
 			.attr("id", "B_text")
+            .style("color", "blue")
 			.text(" B: ")
 			.append("span")
 			.attr("id", "matchB_val")
@@ -287,7 +289,11 @@
 			.attr("x", "160")
 			.attr("y", "320")
 			.text("match color");        
-		
+       d3.select("svg").append("text")
+           .attr("x", "75")
+           .attr("y", "460")
+           .text("primaries");
+               
 		var	Rval = normRGB(Ramp, "R"),
             Gval = normRGB(Gamp, "G"),
             Bval = normRGB(Bamp, "B"),
@@ -413,18 +419,18 @@
 				};
 			
 			// decide whether to update match or test color
-			if (amp >= 0) {
+			if (amp > 0) {
 				
 				_val = normRGB(amp, COL);
-				console.log(wavelength_to_RGB(wavelength), d3.rgb(Rval, Gval, Bval));
 				col_ = d3.rgb(Rval, Gval, Bval);          
 				light_to_update = "matchLight";
 				x_loc = 160;
 			}
+
 			else {
 				console.log(COL);
 				col_ = wavelength_to_RGB(wavelength);
-				col_[COL.toLowerCase()] = normRGB(amp, COL);
+				col_[COL.toLowerCase()] = col_[COL.toLowerCase()] + normRGB(amp, COL);
 				light_to_update = "light";
 				x_loc = 60;
             }
@@ -445,7 +451,6 @@
 		
         function lightChange() {
 			wavelength = parseInt(this.value);
-			console.log(wavelength_to_RGB(wavelength));
 			RGBdata = [
 						[wavelength, Ramp, 'red'], 
 						[wavelength, Gamp, 'green'], 
