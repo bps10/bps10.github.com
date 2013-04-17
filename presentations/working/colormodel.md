@@ -9,6 +9,8 @@
 
 #### Color spaces
 1. Go through the demonstration.
+	* This is how color spaces were first derived.
+	* We now have complete description of cone spectral sensitivities and optical filters, allowing us to build color spaces from the ground up.
 2. Why should we care:
 	* How do we represent a spectrum of light in terms of perception.
 	* Of major importance for many industries. Obviously visual work such as graphics, but also every carpet, paint, desk, tile. Everything has color! Need a system to specify what we mean.
@@ -37,18 +39,18 @@ Discuss briefly unique hues. How things should plot out.
 
 If this isn't making much sense, lets think a little about color deficiencies, which are more familiar to all of us.
 
-**Tritan** S-cone silencing. Directions along these paths will produce no change in the LM cones.
+**Tritan**: S-cone silencing. Directions along these paths will produce no change in the LM cones.
 
-**Deutan** M-cone silencing. Directions along these paths will produce no change in the LS cones.
+**Deutan**: M-cone silencing. Directions along these paths will produce no change in the LS cones.
 
-**Protan** L-cone silencing. Directions along these paths will produce no change in the MS cones.
+**Protan**: L-cone silencing. Directions along these paths will produce no change in the MS cones.
 
 Can we read cone ratios from this plot in a color normal individual?
 
 #### L:M ratio
 
 * Let's start by looking at the lines we just heard about. The tritan and deutan confusion lines. These are also called the spectral neutral points since they go through equal energy. 
-
+* Unique hues are the spectral neutral point of opposing systems (Blue-Yellow, Red-Green).
 * In a color normal individual, we posit that these spectral neutral points will be determined by the L:M cone ratio. 
 
 

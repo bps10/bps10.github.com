@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
 <link rel="icon" type="image/png" href="Favicon.png" />
 <style>
 
@@ -10,21 +11,22 @@
 #bluegreenFull {
         position: fixed;
         top: 200px;
-        left: 100px;}		
+        left: 50px;}		
 
 #bluegreen {
         position: fixed;
         top: 200px;
-        left: 600px;}	
+        right: 50px;}	
 		
 </style>
-
-  <body>
+<script type="text/javascript" src="../../static/js/slide.js"></script>
+</head>
+<body onload="formatImages(60.0);">
     <h2 class="slideTitle">L:M ratio</h2>
       <div>
-        <img src="../../static/figures/colorModel/bluegreenFull.png" id="bluegreenFull" height="300" width="400">
-        <img src="../../static/figures/colorModel/bluegreen.png" id="bluegreen" height="300" width="400">
+        <img src="../../static/figures/colorModel/bluegreenFull.png" id="bluegreenFull">
+        <img src="../../static/figures/colorModel/bluegreen.png" id="bluegreen">
 	</div>
 
-  </body>
+</body>
 </html>
