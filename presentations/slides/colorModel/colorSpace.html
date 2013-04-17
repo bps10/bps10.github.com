@@ -132,6 +132,11 @@
 		var Bline = d3.svg.line()
 		.x(function(d) { return x(d.lambda); })
 		.y(function(d) { return y(d.B); });
+
+		var Ramp = 0,
+			Gamp = 0,
+			Bamp = 0,
+			wavelength = 550;
 		
         var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -144,7 +149,11 @@
 			d.R = +d.R;
 			d.G = +d.G;
 			d.B = +d.B;
-			d.lambda = +d.lambda;
+			d.lambda = +d.lambda
+			rgb = wavelength_to_RGB(d.lambda);
+			d.Rrgb = rgb['r']
+			d.Grgb = rgb['g']
+			d.Brgb = rgb['b']
 		  });
 		
 		x.domain(d3.extent(CMFs, function(d) { return d.lambda; }));
@@ -278,25 +287,21 @@
 			.attr("x", "160")
 			.attr("y", "320")
 			.text("match color");        
-        
-		d3.select("#spectral").on("change", lightChange)
-		d3.select("#matchR").on("change", matchR)
-		d3.select("#matchG").on("change", matchG)
-		d3.select("#matchB").on("change", matchB)
-        d3.select("#showRGB").on("change", showRGB)
 		
-		var Ramp = 0,
-			Gamp = 0,
-			Bamp = 0,
-            Rval = normRGB(Ramp, "R"),
+		var	Rval = normRGB(Ramp, "R"),
             Gval = normRGB(Gamp, "G"),
             Bval = normRGB(Bamp, "B"),
-			wavelength = 550,
 			checked = false;
 			RGBdata = [
 						[wavelength, Ramp, 'red'], 
 						[wavelength, Gamp, 'green'], 
 						[wavelength, Bamp, 'blue']];
+						
+		d3.select("#spectral").on("change", lightChange)
+		d3.select("#matchR").on("change", matchR)
+		d3.select("#matchG").on("change", matchG)
+		d3.select("#matchB").on("change", matchB)
+        d3.select("#showRGB").on("change", showRGB)
 
 		svg.selectAll("RGB")
 			.data(RGBdata)		
@@ -307,16 +312,24 @@
 			.attr("cy", function(d) { return y(d[1]);})
 			.attr("r", 5)
 			.style("fill", function(d) { return d[2];});
+		
+		function findByLambda(source, lambda) {
+			return source.filter(function( obj ) {
+				// coerce both obj.id and id to numbers 
+				// for val & type comparison
+				return +obj.lambda === +lambda;
+			})[ 0 ];
+		}
+		var b = findByLambda(CMFs, 600);
+		console.log(b);
+		console.log(CMFs);
 
         function normRGB(amp, COL) {
-				cmf = [];
-				for (var i = 0; i < CMFs.length; i++) {
-					cmf.push(CMFs[i][COL])
-				};
-				console.log(COL, d3.max(cmf));
 
-				range = d3.max(cmf) + Math.abs(d3.min(cmf));
-				out = Math.abs(Math.round((amp) / range * 255));
+				match = findByLambda(CMFs, wavelength);
+				console.log(wavelength);
+				out = Math.abs(Math.round((amp / match[COL.toUpperCase()]) * 
+										match[COL.toUpperCase() + "rgb"]));
 
 				if (out > 255) {
 					out = 255;
@@ -426,9 +439,10 @@
 				.attr("r", 40)
 				.style("fill", col_)
 				.style("opacity", 1);
+		
 		return _val	
         };
-
+		
         function lightChange() {
 			wavelength = parseInt(this.value);
 			console.log(wavelength_to_RGB(wavelength));
