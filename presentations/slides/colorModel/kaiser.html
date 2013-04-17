@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
 <style>
 
     @import url('../../static/style/slide.css');
 
 #kaiser {
         position: fixed;
-        top: 250px;
-        left: 350px;}
+        top: 225px;
+        left: 50px;
+        }
 
-
+#kaiser_lines {
+        position: fixed;
+        top: 225px;
+        right: 50px;
+        }
 		
 </style>
-
-  <body>
+<script type="text/javascript" src="../../static/js/slide.js"></script>
+</head>
+  <body onload="formatImages(60.0);">
     <h2 class="slideTitle">failure of the 'Standard Model'</h2>
       <div>
-        <img src="../../static/figures/colorModel/kaiser_Neitz.png" id="kaiser" height="300" width="400">
-
+        <img src="../../static/figures/colorModel/kaiser_Neitz.png" id="kaiser">
+        <img src="../../static/figures/colorModel/kaiser_Neitz_BYlines.png" id="kaiser_lines">
 	</div>
 
   </body>

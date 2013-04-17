@@ -5,19 +5,18 @@
 * Not actually going to be talking much about Luv space.
 * Has interesting property that distance within space is roughly uniform in terms of color discrimination.
 * However, not currently correct, for reasons that we will see.
+* Only a least squares approximation.
 
 #### Color spaces
-* How do we represent a spectrum of light in terms of perception.
-* Of major importance for many industries. Obviously visual work such as graphics, but also every carpet, paint, desk, tile. Everything has color! Need a system to specify what we mean.
-* We rely on this all the time in this lab, but don't necessarily think about it in formal terms.
-* Examples: Unique hues, 100 hue, anomaloscope, etc.
-* Can formally represent this in matrix notation. System A, brings us from Spectral Sensitivities to color matching functions.
-	* Color spaces. Why bother?
-	* Cone sensitivities now known.
-	* Predict color matching data.
-	* Fully specify colors.
-* Individual variability in color perception.
-* Most people think of color spaces in terms of representing color, with an antagonistic (or misinformed) view of the circuitry that actually processes color. We want to use color spaces to infer some principles about the underlying physiology.
+1. Go through the demonstration.
+2. Why should we care:
+	* How do we represent a spectrum of light in terms of perception.
+	* Of major importance for many industries. Obviously visual work such as graphics, but also every carpet, paint, desk, tile. Everything has color! Need a system to specify what we mean.
+	* We rely on this all the time in this lab, but don't necessarily think about it in formal terms.
+	* Examples: Unique hues, 100 hue, anomaloscope, etc.
+	* Can formally represent this in matrix notation. System A, brings us from Spectral Sensitivities to color matching functions.
+	* Individual variability in color perception.
+	* Most people think of color spaces in terms of representing color, with an antagonistic (or misinformed) view of the circuitry that actually processes color. We want to use color spaces to infer some principles about the underlying physiology.
 
 #### Neitz space
 
@@ -68,9 +67,9 @@ Can we read cone ratios from this plot in a color normal individual?
 
 #### First Stage
 
-* Lens filters, source of variability 
+* Lens and macula filters, source of variability 
 * Cone spectral sensitivity functions
-* Correct for optical filters
+* Correct for optical filters.
 
 #### Second Stage
 
