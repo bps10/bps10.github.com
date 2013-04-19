@@ -90,6 +90,20 @@
 		left: 560px;
 		font-size: 18px;
 		}
+	
+	#redPrimary {
+		font: 20px sans-serif;
+		fill: red
+		}
+	#greenPrimary {
+		font: 20px sans-serif;
+		fill: green
+		}
+	#bluePrimary {
+		font: 20px sans-serif;
+		fill: blue
+		}
+		
 </style>
 <script type="text/javascript" src="../../static/js/slide.js"></script>
 <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -164,7 +178,7 @@
         .attr("step", 1)
         .attr("value", 550);
         
-		d3.select(".inputholder").append("span")
+        d3.select(".inputholder").append("span")
         .attr("id", "light_text")
         .text("$\\lambda$: ")
         .append("span")
@@ -289,11 +303,29 @@
 			.attr("x", "160")
 			.attr("y", "320")
 			.text("match color");        
-       d3.select("svg").append("text")
-           .attr("x", "75")
+        d3.select("svg").append("text")
+           .attr("x", "270")
            .attr("y", "460")
            .text("primaries");
-               
+		   
+		d3.select("svg").append("text")
+			.attr("id", "redPrimary")
+			.attr("x", "270")
+			.attr("y", "488")
+			.style("color", "red")
+			.text("650 nm")
+ 		d3.select("svg").append("text")
+			.attr("id", "greenPrimary")
+			.attr("x", "270")
+			.attr("y", "512")
+			.style("color", "red")
+			.text("530 nm")
+		d3.select("svg").append("text")
+			.attr("id", "bluePrimary")
+			.attr("x", "270")
+			.attr("y", "537")
+			.text("460 nm")
+			
 		var	Rval = normRGB(Ramp, "R"),
             Gval = normRGB(Gamp, "G"),
             Bval = normRGB(Bamp, "B"),
