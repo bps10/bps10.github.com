@@ -8,6 +8,12 @@
     h5 {
         position: relative;
         left: 100px;}
+
+    #AOcones {
+            position: fixed;
+            top: 300px;
+            left: 225px;
+            }
 		
 </style>
 <script type="text/javascript" src="../../static/js/slide.js"></script>
@@ -15,23 +21,16 @@
   src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 </head>
-  <body onload="formatImages(50.0);">
+  <body onload="formatImages(150.0);">
     <h2 class="slideTitle">neitz model</h2>
       <div>
-        <h5> standard model</h3>
-        <div class="JAX">
-          \[\begin{equation}
-          BY = (M+L) - S \\
-          RG = L - M 
-          \end{equation} \]
-        </div>
-        <h5> neitz model</h3>
         <div class="JAX">
           \[\begin{equation}
           BY = (S+M) - L \\
           RG = (S+L) - M
           \end{equation} \]
         </div>
+        <img src="../../static/images/AOcones.png" id="AOcones">
 	</div>
 
   </body>
