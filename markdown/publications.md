@@ -23,12 +23,21 @@ Published from work in the labs of [Andrea Simmons][1] and [Florian Eichler][2]
 
 ### 2013
 
-* [**Schmidt**, Neitz & Neitz][conf2013a]  
+* [**Schmidt**, Neitz & Neitz][conf2013b] *The neurobiological explanation for color appearance and hue perception*- [ICVS][_icvs], Winchester UK
+    * [PDF of the poster][pdf_b1] 
 
-    *Peripheral photoreceptor activity during accommodation and emmetropization* 
+<br>
+
+* [**Schmidt**, Neitz & Neitz][conf2013a] *Peripheral photoreceptor activity during accommodation and emmetropization* - [ARVO][_arvo], Seattle Washington
+
     * [PDF of the poster][pdf_a1]
     * [presentation notes][pdf_a2]
 
+[_icvs]: http://macboy.uchicago.edu/
+[_arvo]: http://arvo.org
+[conf2013b]: ../static/abstracts/ICVS_2013/Schmidt_ICVS_2013.pdf
 [conf2013a]: ../static/abstracts/ARVO_2013/Schmidt_ARVO_2013_abstract.pdf
 [pdf_a1]: ../static/abstracts/ARVO_2013/Schmidt_ARVO_Poster_2013_Final_Smaller.pdf
 [pdf_a2]: ../static/abstracts/ARVO_2013/Schmidt_ARVO_2013_PresentationNotes.pdf
+[pdf_b1]: ../static/abstracts/ICVS_2013/Schmidt_ICVS_2013_formatted_2.pdf
+
