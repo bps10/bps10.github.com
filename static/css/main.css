@@ -11,19 +11,7 @@
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,.5,0,.7), 0 0 30px rgba(0,0,0,.075);
-  background: #00b2bd; /* Old browsers */
-  
-  background: -moz-linear-gradient(45deg,  #00b2bd 0%, #adffad 100%); /* FF3.6+ */
-  
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#00b2bd), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
-  
-  background: -webkit-linear-gradient(45deg,  #00b2bd 0%, #adffad 100%); /* Chrome10+,Safari5.1+ */
-  
-  background: -o-linear-gradient(45deg,  #00b2bd 0%, #adffad 100%); /* Opera 11.10+ */
-  
-  background: -ms-linear-gradient(45deg,  #00b2bd 0%, #adffad 100%); /* IE10+ */
-  
-  background: linear-gradient(45deg,  #00b2bd 0%, #adffad 100%); /* W3C */
+  background: #FFFFFF; /* Old browsers */
   
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007500', endColorstr='#00b2bd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   
@@ -100,22 +88,24 @@ hr {
 }
 
 
-iframe {
-    align: left;
-    marginwidth: 0;
-    marginheigh: 0;
-    scrolling: no;
-    width: 1200px;
-    border: 0;
-    }
 iframe#colorSpace {
     min-height: 1550px;
+    min-width: 1000px;
     }
     
 iframe#emmetropization {
     min-height: 2200px;
     }
-    
+
+iframe {
+    align: left;
+    margin-width: 0;
+    margin-heigh: 0;
+    scrolling: no;
+    width: 1200px;
+    border: 0;
+    }
+
 aside {
     margin: 1em;
     left: 600px;
@@ -137,13 +127,24 @@ fieldset {
    Chrome Frame prompt
    ========================================================================== */
 
+#frontpage {
+    margin: 50px 10px 5px 5px;
+    border-style: solid;
+    border-width: 6px;
+}
+
+#colorSpace {
+    width: 220px; /* you can use % */
+    height: auto;
+}
+
+      
 .chromeframe {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
 }
-
 
 table td, table th {
     padding: 1px 8px 1px 5px;
