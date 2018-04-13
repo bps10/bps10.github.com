@@ -71,9 +71,9 @@ encoding: utf-8 # Make sure the encoding is right
 lang: en-GB # Set the site language
 title: "Brian P. Schmidt" # Site name or title, also used in jekyll-seo-tag
 
-logo: "assets/logo.svg" # Site logo, also used in jekyll-seo-tag
+logo: "/assets/logo.svg" # Site logo, also used in jekyll-seo-tag
 
-description: "Investigating visual sensation" # Site description and default description, also used in jekyll-seo-tag
+description: "Unraveling visual perception, one cell at a time" # Site description and default description, also used in jekyll-seo-tag
 
 url: "https://bps10.github.io" # Site url, also used in jekyll-seo-tag
 baseurl: "/"
@@ -109,7 +109,7 @@ social_links: # Appears in sidebar. Set the urls then uncomment and comment out 
   Twitter: https://twitter.com/BrianPSchmidt
   LinkedIn: https://www.linkedin.com/in/brian-schmidt-2a606263/
   GitHub: https://github.com/bps10
-  RSS: /feed.xml
+  #RSS: /feed.xml
 
 sharing_links: # Appear at the bottom of single blog posts, uncomment and comment out as desired. Colours set the button colour
   # Twitter: "#0d94e7"

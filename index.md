@@ -1,6 +1,6 @@
 ---
 feature_image: static/img/S20076R_montage_6_cropped_landscape.png
-aside: true
+aside: false
 feature_text: |
  # Brian P. Schmidt, PhD
 ---
@@ -9,6 +9,7 @@ Hi! I am a postdoc in the lab of [Austin Roorda][RoordaLab] at [UC Berkeley][UCB
 
 I [research][research] how the retina turns light into sight.
 
+{% include nav-social.html %}
 
 [research]: /research/
 [RoordaLab]: roorda.vision.berkeley.edu

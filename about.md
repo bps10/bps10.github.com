@@ -13,7 +13,7 @@ feature_text: |
 
 
 I received my PhD from the [Graduate Program in Neuroscience][Neuro] at University of Washington (Seattle WA) in December 2015. My [disseration research][dissertation] was conducted in the labs of [Jay and Maureen Neitz][NeitzLab].
-
+	  
 [dissertation]: https://digital.lib.washington.edu/researchworks/handle/1773/35125
 [RoordaLab]: orda.vision.berkeley.edu
 [UCB]: https://www.berkeley.edu/
