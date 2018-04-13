@@ -1,12 +1,12 @@
 {
-  "lang": "en-US",
-  "name": "Brian P. Schmidt, PhD",
-  "short_name": "BrianP.Schmidt,PhD",
+  "lang": "en-GB",
+  "name": "Brian P. Schmidt",
+  "short_name": "BrianP.Schmidt",
   "theme_color": "#24292e",
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "",
+      "src": "/assets/logo.svg",
       "sizes": "512x512"
     }
   ],
