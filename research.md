@@ -10,7 +10,7 @@ feature_text: |
 ---
 
 
-I am interested in understanding the neural basis of sensory experience. Primary sensory neurons, such as cone photoreceptors, gather real-time information about the environment for the purpose of  influencing the organism’s behavior. The samples are relayed to downstream centers in the form of discrete action potentials. Those signals, however, are often noisy and unreliable, as many perceptual illusions demonstrate.  To minimize ambiguity, the brain leverages at least three sources of information during perceptual processing: 1) feed-forward signals from sensory neurons, 2) prior experience and 3) feedback signals. The purpose of my work is to understand how incoming sensory input is incorporated with other sources of sensory information to produce a coherent interpretation. 
+I am interested in understanding the neural basis of sensory experience. Primary sensory neurons, such as cone photoreceptors, gather real-time information about the environment for the purpose of  influencing the organism’s behavior. The samples are relayed to downstream centers in the form of discrete action potentials. Those signals, however, are often noisy and ambiguous, as many perceptual illusions demonstrate.  To minimize ambiguity, the brain leverages at least three sources of information during perceptual processing: 1) feed-forward signals from sensory neurons, 2) prior experience and 3) feedback signals. The purpose of my work is to understand how incoming sensory input is incorporated with other sources of sensory information to produce a coherent interpretation. 
 
 ## Current projects
 
@@ -19,7 +19,7 @@ My postdoctoral research investigates the neural mechanisms underlying elementar
 ## Adaptive optics ophthalmoscope
 
 ![AO image](../static/img/S20076R_IR_image_quality.png)
-Figure 1. Adaptive optics image of my right eye taken at three different retinal locations. A. Very center of the retina or foveola. Cones here are very small (each blob is a single cone). This is where what we use to read fine print. B. 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to the cones C. 5 degrees away from center. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the width of a human hair is about [30-100 microns](https://en.wikipedia.org/wiki/Hair%27s_breadth).
+Figure 1. Adaptive optics image of my right eye taken at three different retinal locations. A. Very center of the retina or foveola. Cones here are very small (each blob is a single cone). This is the area we use to read fine print. B. 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to the cones C. 5 degrees away from center. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the width of a human hair is about [30-100 microns](https://en.wikipedia.org/wiki/Hair%27s_breadth).
 
 ## Publications
 
