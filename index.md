@@ -9,7 +9,7 @@ Hi! I am a postdoc in the lab of [Austin Roorda][RoordaLab] at [UC Berkeley's][U
 
 I [research][research] how the retina turns light into sight.
 
-{% include button.html text="Follow" icon="twitter" link="https://twiter.com/BrianPSchmidt" %}{% include button.html text="Github" icon="github" link="https://github.com/bps10/" %}{% include button.html text="Linked" icon="linkedin" link="https://www.linkedin.com/in/brian-schmidt-2a606263/" %}
+{% include button.html text="Follow" icon="twitter" link="http://twiter.com/BrianPSchmidt" %}{% include button.html text="Github" icon="github" link="https://github.com/bps10/" %}{% include button.html text="Linked" icon="linkedin" link="https://www.linkedin.com/in/brian-schmidt-2a606263/" %}
 
 
 [research]: /research/
