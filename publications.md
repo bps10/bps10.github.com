@@ -5,8 +5,6 @@ feature_text: |
  # Brian P. Schmidt, PhD
 ---
 
-## Publications
-
 7. [Sensations from a single M-cone depend on the activity of surrounding S-cones][blue-paper]. **BP Schmidt++**, R Sabesan++, WS Tuten, J Neitz, A Roorda. 2018. bioRxiv, 260653.
 
 6. [The elementary representation of spatial and color vision in the human retina][white-paper]. R Sabesan++, **BP Schmidt++**, WS Tuten, A Roorda. 2016. Science advances 2 (9), e1600797
