@@ -21,35 +21,10 @@ My postdoctoral research investigates the neural mechanisms underlying elementar
 ![AO image](../static/img/S20076R_IR_image_quality.png)
 Figure 1. Adaptive optics image of my right eye taken at three different retinal locations. A. Very center of the retina or foveola. Cones here are very small (each blob is a single cone). This is the area we use to read fine print. B. 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to the cones C. 5 degrees away from center. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the width of a human hair is about [30-100 microns](https://en.wikipedia.org/wiki/Hair%27s_breadth).
 
-## Publications
-
-### Selected:
-
-[Sensations from a single M-cone depend on the activity of surrounding S-cones][blue-paper]. **BP Schmidt**, R Sabesan, WS Tuten, J Neitz, A Roorda. 2018. bioRxiv, 260653.
-
-[The elementary representation of spatial and color vision in the human retina][white-paper]. R Sabesan+, **BP Schmidt+**, WS Tuten, A Roorda. 2016. Science advances 2 (9), e1600797
-
-[Circuitry to explain how the relative number of L and M cones shapes color experience][green-paper]. **BP Schmidt+**, P Touch, M Neitz, J Neitz. 2016. Journal of vision 16 (8), 18-18.
-
-[Neurobiological hypothesis of color appearance and hue perception][model-paper]. **BP Schmidt**, M Neitz, J Neitz. 2014. Journal of the Optical Society of America A 31 (4), A195-A207.
-
-**+** Co-first authors
-
-### See [Google scholar][scholar] for full list
-
-
-[blue-paper]: https://www.biorxiv.org/content/early/2018/02/09/260653
-[white-paper]: http://advances.sciencemag.org/content/2/9/e1600797
-[green-paper]: http://jov.arvojournals.org/article.aspx?articleid=2531368
-[model-paper]: https://www.ncbi.nlm.nih.gov/pubmed/24695170
-[scholar]: https://scholar.google.com/citations?user=omyFr4IAAAAJ&hl=en
 [RoordaLab]: orda.vision.berkeley.edu
 [UCB]: https://www.berkeley.edu/
 [Opto]: https://optometry.berkeley.edu/ 
 [Neuro]: http://depts.washington.edu/neurogrd/
 [NeitzLab]: http://neitzvision.com/
-
-{% include icon.html id="twitter" %}
-{% include icon.html id="github" %}
 
 
