@@ -27,6 +27,8 @@ The motivation of this work is to understand how the visual system creates a mea
 ![AO image](../assets/img/S20076R_IR_image_quality.png)
 The above image is an adaptive optics image of my right eye taken at three different retinal locations. A. Very center of the retina or foveola. Cones here are very small (each blob is a single cone). This is the area we use to read fine print. B. 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to the cones C. 5 degrees away from center. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the [width of a human hair](https://en.wikipedia.org/wiki/Hair%27s_breadth) is about 30-100 microns.
 
+### See [publications]({{ site.url }}/publications) for more information.
+
 [RoordaLab]: orda.vision.berkeley.edu
 [UCB]: https://www.berkeley.edu/
 [Opto]: https://optometry.berkeley.edu/ 

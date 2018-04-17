@@ -23,6 +23,11 @@ feature_text: |
 
 **++** Co-first authors
 
+## Presentations (selected)
+
+1. **BP Schmidt**, AE Boehm, A Roorda.  [Plucking strings and playing chords: percepts elicited from single and multiple cone stimulation]({{ "/assets/img/Schmidt_ARVO2018_FINAL.pdf" | absolute_url }}). ARVO 2018.
+
+
 ### See [Google scholar][scholar] for full list
 
 
