@@ -1,9 +1,11 @@
 ---
-feature_image: ../static/img/S20076R_montage_6_cropped_landscape.png
+feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
 aside: false
 feature_text: |
  # Brian P. Schmidt, PhD
 ---
+
+## Publications
 
 7. [Sensations from a single M-cone depend on the activity of surrounding S-cones][blue-paper]. **BP Schmidt++**, R Sabesan++, WS Tuten, J Neitz, A Roorda. 2018. bioRxiv, 260653.
 
