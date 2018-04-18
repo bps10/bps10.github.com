@@ -44,6 +44,13 @@
   },
   
   {
+    "title": "Resources",
+    "excerpt": "\n",
+    "content": "Source code\n\n\n  \n    AOVIS_projector. A simple program for displaying an external fixation spot, background and eccentricity grid using an external projector. Developed while a postdoc in the Roorda Lab.\n  \n  \n    AOVIS_toolbox. A collection of useful MATLAB scripts for processing and analyzing AO vision studies. Some of these files were developed by prior members of the Roorda Lab.\n  \n  \n    AOMcontrol. MATLAB interface developed by the lab of Austin Roorda for delivering stimuli in an Adaptive Optica Scanning Laser Ophthalmoscope.\n  \n\n\nPublished research\n\n\n  \n    Source code and data for Schmidt, Touch, Neitz, Neitz (2016) J Vision. Analysis of monochromatic unique hue settings for 14 volunteers with known L:M cone ratios.\n  \n  \n    Source code and data for Schmidt, Neitz, Neitz (2014). Journal of the Optical Society of America A.  A model of human color perception.\n  \n\n\nData\n\n\n  Data from: Sabesan, Schmidt, Tuten, Roorda (2016) and Schmidt, Sabesan, Tuten, Neitz, Roorda (2018).\n\n\n\n\n",
+    "url": "//resources/"
+  },
+  
+  {
     "title": "Search",
     "excerpt": "Search for a page or post you’re looking for\n",
     "content": "{% include site-search.html %}\n",

@@ -96,7 +96,8 @@ css_inline: true # Will insert all styles into a single <style> block in the <he
 navigation_header:
   Home: /
   Research: /research/  
-  Publications: /publications/    
+  Publications: /publications/
+  Resources: /resources/
   About: /about/  
   #Blog: /blog/
   #Categories: /categories/
@@ -104,7 +105,7 @@ navigation_header:
   #Fork Me: https://github.com/bps10/bps10.github.io
 
 navigation_footer:
-  Created by Brian Schmidt: https://bps10.github.io
+  Home: https://bps10.github.io
 
 social_links: # Appears in sidebar. Set the urls then uncomment and comment out as desired
   Twitter: https://twitter.com/BrianPSchmidt
