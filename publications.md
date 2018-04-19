@@ -1,6 +1,6 @@
 ---
 feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
-aside: true
+aside: false
 feature_text: |
  # Brian P. Schmidt, PhD
 ---

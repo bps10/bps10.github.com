@@ -47,16 +47,16 @@ sass:
   style: compressed # Style compression
 permalink: pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 excerpt_separator: <!-- more --> # Marks end of excerpt in posts
-timezone: Europe/London # Timezone for blog posts and alike
+timezone: America/Los_Angeles # Timezone for blog posts and alike
 
 # 5. Collections
 collections:
   posts:
-    title: Posts # Needed for Siteleaf
+    title: Notes # Needed for Siteleaf
     output: false
-    description: "My thoughts and ideas" # The post list page content
+    description: "Research notes" # The post list page content
     feature_text: |
-      Welcome to the blog
+      Notes from the bench
     feature_image: "/static/img/S20076R_montage_6_cropped_landscape.png"
 
 # 6. Jekyll collections settings
@@ -99,9 +99,8 @@ navigation_header:
   Publications: /publications/
   Resources: /resources/
   About: /about/  
-  #Blog: /blog/
-  #Categories: /categories/
-  #Search: /search/
+  #Notes: /notes/
+  #Search: /search/  
   #Fork Me: https://github.com/bps10/bps10.github.io
 
 navigation_footer:

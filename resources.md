@@ -1,6 +1,6 @@
 ---
 feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
-aside: true
+aside: false
 title: Resources
 feature_text: |
  # Brian P. Schmidt, PhD
@@ -14,6 +14,8 @@ feature_text: |
 * [AOVIS_toolbox][toolbox]. A collection of useful MATLAB scripts for processing and analyzing AO vision studies. Some of these files were developed by prior members of the Roorda Lab.
 
 * [AOMcontrol][aomcontrol]. MATLAB interface developed by the lab of Austin Roorda for delivering stimuli in an Adaptive Optica Scanning Laser Ophthalmoscope.
+
+* [LM-ratio][lmratio]. A stand-alone python program for computing L:M cone ratio from flicker photometric data collected with [electroretinograms][ERGs]. Developed in the Neitz lab following published [protocols](https://jov.arvojournals.org/article.aspx?articleid=2121455).
 
 
 #### Published research
@@ -29,7 +31,8 @@ feature_text: |
 
 <iframe src="https://widgets.figshare.com/articles/3619713/embed?show_title=1" width="568" height="351" frameborder="0"></iframe>
 
-
+[ERGs]: http://webvision.med.utah.edu/book/electrophysiology/the-electroretinogram-clinical-applications/
+[lmratio]: http://bps10.github.io/LM-Ratio/
 [ARVO2018]: http://bps10.github.io/assets/img/Schmidt_ARVO2018_FINAL.pdf
 [ARVO2018abstract]: http://bps10.github.io/assets/img/Schmidt_ARVO2018_submission.pdf
 [aomcontrol]: https://roordalab.github.io/aomcontrol/

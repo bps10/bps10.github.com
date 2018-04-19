@@ -13,7 +13,9 @@ feature_text: |
 
 
 I received my PhD from the [Graduate Program in Neuroscience][Neuro] at University of Washington (Seattle WA) in December 2015. My [disseration research][dissertation] was conducted in the labs of [Jay and Maureen Neitz][NeitzLab].
-	  
+
+<a href="https://orcid.org/0000-0003-3460-0605" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">orcid.org/0000-0003-3460-0605</a>
+ 
 [dissertation]: https://digital.lib.washington.edu/researchworks/handle/1773/35125
 [RoordaLab]: orda.vision.berkeley.edu
 [UCB]: https://www.berkeley.edu/

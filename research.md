@@ -2,7 +2,7 @@
 title: Research
 indexing: true
 sitemap: true
-aside: true
+aside: aside
 feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
 feature_text: |
  # Brian P. Schmidt, PhD
