@@ -20,8 +20,6 @@ feature_text: |
 
 #### Published research
 
-* [Source code and data][green-paper] for Schmidt, Touch, Neitz, Neitz (2016) J Vision. Analysis of monochromatic unique hue settings for 14 volunteers with known L:M cone ratios. 
-
 * [Source code and data][NeitzModel] for Schmidt, Neitz, Neitz (2014). Journal of the Optical Society of America A.  A model of human color perception.
 
 
@@ -31,6 +29,22 @@ feature_text: |
 
 <iframe src="https://widgets.figshare.com/articles/3619713/embed?show_title=1" width="568" height="351" frameborder="0"></iframe>
 
+* Data from Schmidt, Touch, Neitz, Neitz (2016) J Vision as collected in the [appendix][green-paper]. Data are reprinted here for convenience.  
+
+Monochromatic unique hue settings for 14 volunteers with known L:M cone ratios, measured macular pigment optical density and iris lightness. 
+
+<iframe src="https://widgets.figshare.com/articles/6163787/embed?show_title=1" width="568" height="367" frameborder="0"></iframe>
+
+Notes: L cone sensitivities were based on the sequence of each subjects L pigment.
+
+Amino acids reported: exon 2—65, 111, 116; exon 3—153, 171, 174, 180; and exon 4—230, 233, 236.
+
+For females with two L sequences, the peak sensitivity of both pigments was averaged to compute the reported peak L cone sensitivity.
+
+All subjects had M cone peak values of 530 nm. All subjects identified as Caucasian except subjects U12 and U13, who were of Asian ethnicity.
+
+Data were published in the appendix of Schmidt, Touch, Neitz, Neitz (2016). "Circuitry to explain how the relative number of L and M cones shapes color experience." They published here for easier access.
+
 [ERGs]: http://webvision.med.utah.edu/book/electrophysiology/the-electroretinogram-clinical-applications/
 [lmratio]: http://bps10.github.io/LM-Ratio/
 [ARVO2018]: http://bps10.github.io/assets/img/Schmidt_ARVO2018_FINAL.pdf
@@ -38,5 +52,5 @@ feature_text: |
 [aomcontrol]: https://roordalab.github.io/aomcontrol/
 [toolbox]: https://roordalab.github.io/AOVIS_toolbox/
 [projector]: https://roordalab.github.io/AOVIS_projector/
-[green-paper]: http://bps10.github.io/SchmidtNeitzNeitz2016/
+[green-paper]: http://jov.arvojournals.org/article.aspx?articleid=2531368
 [NeitzModel]: http://bps10.github.io/color/
