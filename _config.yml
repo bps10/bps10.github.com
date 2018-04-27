@@ -30,7 +30,7 @@ plugins:
 
 # 3. Gem settings
 #paginate: 2 # jekyll-paginate > items per page
-#paginate_path: blog/page:num # jekyll-paginate > blog page
+#paginate_path: notes/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
 twitter:
   username: BrianPSchmidt # jekyll-seo-tag > Owners twitter username
@@ -53,7 +53,7 @@ timezone: America/Los_Angeles # Timezone for blog posts and alike
 collections:
   posts:
     title: Notes # Needed for Siteleaf
-    output: false
+    output: true
     description: "Research notes" # The post list page content
     feature_text: |
       Notes from the bench
@@ -98,8 +98,8 @@ navigation_header:
   Research: /research/  
   Publications: /publications/
   Resources: /resources/
+  #Notes: /notes/ 
   About: /about/  
-  #Notes: /notes/
   #Search: /search/  
   #Fork Me: https://github.com/bps10/bps10.github.io
 

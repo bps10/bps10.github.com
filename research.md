@@ -22,12 +22,24 @@ My postdoctoral research investigates the neural mechanisms underlying elementar
 
 The motivation of this work is to understand how the visual system creates a meaningful sensory experience of the external world from the signals that are encoded by the cone mosaic. In our initial experiments, we mapped, for the first time, the spatial topography of color percepts at the level of the cone mosaic. Across trials, a single cone tended to yield a consistent color sensation. The greatest predictor of the color reported was the cone-type probed. This observation suggested that the visual system possesses prior information with sufficient resolution to remember the spectral identity of each cone. Together, this work has implications for our understanding of the basic mechanisms sub-serving color vision and could potentially be leveraged when optimizing retinal prosthetics.
 
-## Adaptive optics ophthalmoscope
+## Imaging cells in a living human eye
 
-![AO image](../assets/img/S20076R_IR_image_quality.png)
-The above image is an adaptive optics image of my right eye taken at three different retinal locations. A. Very center of the retina or foveola. Cones here are very small (each blob is a single cone). This is the area we use to read fine print. B. 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to the cones C. 5 degrees away from center. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the [width of a human hair](https://en.wikipedia.org/wiki/Hair%27s_breadth) is about 30-100 microns.
+
+The first step towards probing vision on a cellular scale is to image photoreceptors with a camera.
+
+Eye doctors routinely use an imaging tool called an ophthalmoscope to peer at the back surface of a patient's eye. Such examinations provide a lot of useful information for detecting and diagnosing disease. Unfortunately, the resolution of a standard ophthalmoscope is quite poor. Only the largest structures, such as major blood vessels and the optic nerve head, are visible - single cells are much to small to be resolved. This is because the surface of the [cornea](https://en.wikipedia.org/wiki/Cornea) and [lens](https://en.wikipedia.org/wiki/Lens_(anatomy)) are riddled with small imperfections.
+
+*Adaptive optics* is a technology that allows us to fix those imperfections and see the very smallest structures - cone and rod photoreceptors.
+
+![AO image](https://bps10.github.io/assets/img/S20076R_IR_image_quality.png)
+
+Above are a series of adaptive optics image taken of my right eye at three different retinal locations. The left image (**A**) was taken at the very center of my retina, the foveola. Cones here are very small (each blob is a single cone). This is the area used for reading fine print. The middle image (**B**) was 1.5 degrees away from the center of gaze. At this location cones become larger in size and rods (the smaller blobs) are found in about equal number to cones. The image to the right (**C**) was 5 degrees away from the foveola. Here rods become clearly visible and more numerous than cones. Scale bar = 1 arcmin or about 5 microns. For reference, the [width of a human hair](https://en.wikipedia.org/wiki/Hair%27s_breadth) ranges from 30-100 microns. 
 
 ## Single cone psychophysics
+
+More about probing the limits of visual sensation shortly. 
+
+Below is a video taken during an experimental session.
 
 <iframe src="https://drive.google.com/file/d/1op-CW3XK4kB0p4wsicoDiujeB5-wvKdY/preview" width="510" height="360"></iframe>
 
