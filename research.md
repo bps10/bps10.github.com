@@ -37,7 +37,7 @@ Above are a series of adaptive optics image taken of my right eye at three diffe
 
 ## Single cone psychophysics
 
-More about probing the limits of visual sensation shortly. 
+Read more about [probing visual sensation at a cellular scale](https://beta.observablehq.com/@bps10/sensations-from-single-cones).
 
 Below is a video taken during an experimental session.
 
