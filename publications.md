@@ -28,29 +28,29 @@ feature_text: |
 
 ## Presentations (selected)
 
-12. **BP Schmidt**, AE Boehm, A Roorda.  [Plucking strings and playing chords: percepts elicited from single and multiple cone stimulation]({{ "/assets/img/Schmidt_ARVO2018_FINAL.pdf" | absolute_url }}). ARVO 2018.
+12. **BP Schmidt**, AE Boehm, A Roorda.  *Plucking strings and playing chords: percepts elicited from single and multiple cone stimulation*. ARVO 2018. [pdf of poster]({{ "/assets/img/Schmidt_ARVO2018_FINAL.pdf" | absolute_url }})
 
-11. **Schmidt BP**, Foote K, Boehm A, and Roorda A. Variability in chromatic sensations from cones with the same photopigment. OSA Fall Vision Meeting (talk), 2017.
+11. **Schmidt BP**, Foote K, Boehm A, and Roorda A. *Variability in chromatic sensations from cones with the same photopigment*. OSA Fall Vision Meeting, 2017. [abstract](http://jov.arvojournals.org/article.aspx?articleid=2667426).
 
-10. **Schmidt BP**, Foote K, Boehm A, and Roorda A. Hue, saturation and brightness scaling from signals from single cones. International Color Vision Society (poster), 2017.
+10. **Schmidt BP**, Foote K, Boehm A, and Roorda A. *Hue, saturation and brightness scaling from signals from single cones*. International Color Vision Society, 2017. [abstract]({{ "/assets/pdf/Schmidt_ICVS_2017_v3.pdf" | absolute_url }}). [pdf of poster]({{ "/assets/pdf/Schmidt_ICVS2017_final.pdf" | absolute_url }}).
 
-9. **Schmidt BP**, Bair W, and Neitz J. Lateral inhibition and spectral opponency in the outer retina of primate. ARVO Annual Meeting (talk), 2016.
+9. **Schmidt BP**, Bair W, and Neitz J. *Lateral inhibition and spectral opponency in the outer retina of primate*. ARVO Annual Meeting, 2016. [abstract]({{ "/assets/pdf/Schmidt_ARVO_2016.pdf" | absolute_url }}). [an unpublished chapter describing this research]({{ "/assets/pdf/Schmidt_Chapter6.pdf" | absolute_url }}).
 
-8. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. Two elementary color sensations elicited from the same cone. FASEB Retinal Neurobiology Meeting (talk), 2016.
+8. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. *Two elementary color sensations elicited from the same cone*. FASEB Retinal Neurobiology Meeting, 2016.
 
-7. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. Studying the neural circuitry of blue with single cone stimulation. ARVO Annual Meeting (talk), 2015.
+7. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. *Studying the neural circuitry of blue with single cone stimulation*. ARVO Annual Meeting, 2015.
 
-6. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. How does the brain interpret singals from single cones? OSA Fall Vision Meeting (talk), 2015.
+6. **Schmidt BP**, Sabesan R, Tuten W, Neitz J, and Roorda A. *How does the brain interpret singals from single cones? OSA Fall Vision Meeting*, 2015.
 
-5. **Schmidt BP**, Touch P, Neitz M, and Neitz J. The relative number of L and M cones shapes color experience. Optical Society of America (OSA) Fall Vision Meeting (talk), 2014.
+5. **Schmidt BP**, Touch P, Neitz M, and Neitz J. *The relative number of L and M cones shapes color experience*. Optical Society of America (OSA) Fall Vision Meeting, 2014.
 
-4. **Schmidt BP**, Neitz M, and Neitz J. A labeled line theory accurately predicts individual variability in color experience. ARVO Annual Meeting (talk), 2014.
+4. **Schmidt BP**, Neitz M, and Neitz J. *A labeled line theory accurately predicts individual variability in color experience*. ARVO Annual Meeting, 2014.
 
-3. **Schmidt BP**, Neitz M, and Neitz J. The neurobiological explanation for color appearance and hue perception. International Color Vision Society (poster), 2013.
+3. **Schmidt BP**, Neitz M, and Neitz J. *The neurobiological explanation for color appearance and hue perception*. International Color Vision Society, 2013.
 
-2. **Schmidt BP**, Neitz M, and Neitz J. Peripheral photoreceptor activity during accommodation and emmetropization. ARVO Annual Meeting (poster), 2013.
+2. **Schmidt BP**, Neitz M, and Neitz J. *Peripheral photoreceptor activity during accommodation and emmetropization*. ARVO Annual Meeting, 2013.
 
-1. **Schmidt BP**, Neitz M, and Neitz J. A statistical modeling framework for optically manipulating retinal images to design strategies to modulate cone activity and control myopia. The International Myopia Conferencey (talk), 2013.
+1. **Schmidt BP**, Neitz M, and Neitz J. *A statistical modeling framework for optically manipulating retinal images to design strategies to modulate cone activity and control myopia*. The International Myopia Conferencey, 2013.
 
 
 ### See [Google scholar][scholar] for full list
