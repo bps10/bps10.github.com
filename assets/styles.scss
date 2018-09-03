@@ -6,9 +6,24 @@ styles: true
 @import "alembic";
 
 
-div.container.typeset h1  {
-    font-size: 3.3rem;
+div.container.typeset h1 {
+    font-size: 2.8rem;
     margin-bottom: .29999rem;
     padding-top: .70001rem;
     color: yellow
+}
+
+div.container.typeset h2 {
+    font-size: 1.8rem;
+    margin-bottom: .29999rem;
+    padding-top: .70001rem;
+    color: yellow
+}
+
+img[alt=headshot] {
+  width: 40%;
+  border: 2px solid #000000;
+  background: none;
+  float: left;
+  margin: 5px 15px 0px 0px;
 }

@@ -5,7 +5,8 @@ permalink: /about/
 aside: true
 feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
 feature_text: |
- # Brian P. Schmidt, PhD
+ # Unraveling sight at a cellular scale
+ ## Brian P. Schmidt, PhD
 ---
 
 

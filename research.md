@@ -5,8 +5,8 @@ sitemap: true
 aside: aside
 feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
 feature_text: |
- # Brian P. Schmidt, PhD
-
+ # Unraveling sight at a cellular scale
+ ## Brian P. Schmidt, PhD
 ---
 
 
@@ -42,6 +42,9 @@ Read more about [probing visual sensation at a cellular scale](https://beta.obse
 Below is a video taken during an experimental session.
 
 <iframe src="https://drive.google.com/file/d/1op-CW3XK4kB0p4wsicoDiujeB5-wvKdY/preview" width="510" height="360"></iframe>
+
+The first computer monitor shows a live image of a cone mosaic. The left panel is an unstablized video. The right panel, with a black box surrounding the mosaic, is a stabilized view. The subject's natural eye-movements are corrected in real-time. This monitor also contains a pupil tracker (bottom right) and the software that controls stimulus delivery (red rectangle on the right side). As the video pans to the left, a second monitor shows the real-time wavefront measurements and the adaptive optics control loop. Auditory feedback beeps can be heard. These sounds indicate the start of each trial and each button press. Auditory beeps also indicate when the pupil has moved more than a specified tolerance. 
+
 
 ### See [publications]({{ site.url }}/publications) for more information.
 

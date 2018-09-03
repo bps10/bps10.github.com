@@ -3,7 +3,8 @@ feature_image: ../assets/img/S20076R_montage_6_cropped_landscape.png
 aside: false
 title: Resources
 feature_text: |
- # Brian P. Schmidt, PhD
+ # Unraveling sight at a cellular scale
+ ## Brian P. Schmidt, PhD
 ---
 
 
@@ -23,25 +24,41 @@ feature_text: |
 * [Source code and data][NeitzModel] for Schmidt, Neitz, Neitz (2014). Journal of the Optical Society of America A.  A model of human color perception.
 
 
-#### Data
+#### Archived data
 
-* Data from: Sabesan, Schmidt, Tuten, Roorda (2016) **and** Schmidt, Sabesan, Tuten, Neitz, Roorda (2018). 
+---
+
+###### Schmidt, Boehm, Foote, Roorda (2018)
+
+Raw data and published analyses can be freely accessed at [Github](https://github.com/bps10/SchmidtBoehmFooteRoorda_2018).
+
+---
+
+###### Sabesan, Schmidt, Tuten, Roorda (2016) **and** Schmidt, Sabesan, Tuten, Neitz, Roorda (2018). 
+
+<p></p>
+
 
 <iframe src="https://widgets.figshare.com/articles/3619713/embed?show_title=1" width="568" height="351" frameborder="0"></iframe>
 
-* Data from Schmidt, Touch, Neitz, Neitz (2016) J Vision as collected in the [appendix][green-paper]. Data are reprinted here for convenience.  
+
+---
+
+###### Schmidt, Touch, Neitz, Neitz (2016) J Vision as collected in the [appendix][green-paper]. Data are reprinted here for convenience.  
 
 Monochromatic unique hue settings for 14 volunteers with known L:M cone ratios, measured macular pigment optical density and iris lightness. 
 
 <iframe src="https://widgets.figshare.com/articles/6163787/embed?show_title=1" width="568" height="367" frameborder="0"></iframe>
 
-Notes: L cone sensitivities were based on the sequence of each subjects L pigment.
+**Notes:**
 
-Amino acids reported: exon 2—65, 111, 116; exon 3—153, 171, 174, 180; and exon 4—230, 233, 236.
+*1. L cone sensitivities were based on the sequence of each subjects L pigment.*
 
-For females with two L sequences, the peak sensitivity of both pigments was averaged to compute the reported peak L cone sensitivity.
+*2. Amino acids reported: exon 2—65, 111, 116; exon 3—153, 171, 174, 180; and exon 4—230, 233, 236.*
 
-All subjects had M cone peak values of 530 nm. All subjects identified as Caucasian except subjects U12 and U13, who were of Asian ethnicity.
+*3. For females with two L sequences, the peak sensitivity of both pigments was averaged to compute the reported peak L cone sensitivity.*
+
+*4. All subjects had M cone peak values of 530 nm. All subjects identified as Caucasian except subjects U12 and U13, who were of Asian ethnicity.*
 
 Data were published in the appendix of Schmidt, Touch, Neitz, Neitz (2016). "Circuitry to explain how the relative number of L and M cones shapes color experience." They published here for easier access.
 
@@ -49,7 +66,7 @@ Data were published in the appendix of Schmidt, Touch, Neitz, Neitz (2016). "Cir
 [lmratio]: http://bps10.github.io/LM-Ratio/
 [ARVO2018]: http://bps10.github.io/assets/img/Schmidt_ARVO2018_FINAL.pdf
 [ARVO2018abstract]: http://bps10.github.io/assets/img/Schmidt_ARVO2018_submission.pdf
-[aomcontrol]: https://roordalab.github.io/aomcontrol/
+[aomcontrol]: https://roordalab.github.io/AOMcontrol/
 [toolbox]: https://roordalab.github.io/AOVIS_toolbox/
 [projector]: https://roordalab.github.io/AOVIS_projector/
 [green-paper]: http://jov.arvojournals.org/article.aspx?articleid=2531368
