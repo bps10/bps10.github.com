@@ -9,3 +9,4 @@
 *~
 dev/*
 _site/dev/*
+.sass-cache/*

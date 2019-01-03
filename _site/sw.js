@@ -1,8 +1,8 @@
-const version = '20180903092713';
+const version = '20190103121729';
 const cacheName = `static::${version}`;
 
 const buildContentBlob = () => {
-  return ["/adaptive%20optics/2018/04/25/AO_basics/","/404/","/about/","/categories/","/blog/","/","/manifest.json","/publications/","/research/","/resources/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/feed.xml","/sitemap.xml","/robots.txt","/assets/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
+  return ["/adaptive%20optics/2018/04/25/AO_basics/","/404/","/about/","/blog/","/","/manifest.json","/publications/","/research/","/resources/","/assets/search.json","/search/","/assets/styles.css","/thanks/","/redirects.json","/feed.xml","/sitemap.xml","/robots.txt","/assets/logo.svg", "/assets/default-offline-image.png", "/assets/scripts/fetch.js"
   ]
 }
 
