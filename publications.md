@@ -8,10 +8,12 @@ feature_text: |
 
 ## Publications
 
-8. [The spectral identity of foveal cones is preserved in hue perception][hue-paper]. **BP Schmidt**, AE Boehm, KG Foote, A Roorda. 2018. *bioRxiv*, 317750.
+9. [Real-time compensation for dynamic changes in transverse chromatic offsets for multi-wavelength retinal imaging and microstimulation][TCA-paper]. AE Boehm, CM Privitera, **BP Schmidt**, A Roorda. *BioRxiv*, 484386.
+
+8. [The spectral identity of foveal cones is preserved in hue perception][hue-paper]. **BP Schmidt**, AE Boehm, KG Foote, A Roorda. 2018. *Journal of Vision*,18(19), 1-18.
 
 
-7. [Sensations from a single M-cone depend on the activity of surrounding S-cones][blue-paper]. **BP Schmidt++**, R Sabesan++, WS Tuten, J Neitz, A Roorda. 2018. *bioRxiv*, 260653.
+7. [Sensations from a single M-cone depend on the activity of surrounding S-cones][blue-paper]. **BP Schmidt++**, R Sabesan++, WS Tuten, J Neitz, A Roorda. 2018. *Scientific Reports*, 8, 8651.
 
 6. [The elementary representation of spatial and color vision in the human retina][white-paper]. R Sabesan++, **BP Schmidt++**, WS Tuten, A Roorda. 2016. *Science advances*. 2 (9), e1600797
 
@@ -56,8 +58,9 @@ feature_text: |
 
 ### See [Google scholar][scholar] for full list
 
-[hue-paper]: https://www.biorxiv.org/content/early/2018/05/09/317750
-[blue-paper]: https://www.biorxiv.org/content/early/2018/02/09/260653
+[TCA-paper]: https://www.biorxiv.org/content/early/2018/12/02/484386
+[hue-paper]: https://jov.arvojournals.org/article.aspx?articleid=2711323
+[blue-paper]: https://www.nature.com/articles/s41598-018-26754-1
 [white-paper]: http://advances.sciencemag.org/content/2/9/e1600797
 [green-paper]: http://jov.arvojournals.org/article.aspx?articleid=2531368
 [model-paper]: https://www.ncbi.nlm.nih.gov/pubmed/24695170
@@ -66,7 +69,7 @@ feature_text: |
 [tadpoles]: http://jeb.biologists.org/content/214/14/2297.short
 [scholar]: https://scholar.google.com/citations?user=omyFr4IAAAAJ&hl=en
 
-[RoordaLab]: orda.vision.berkeley.edu
+[RoordaLab]: http://roorda.vision.berkeley.edu/
 [UCB]: https://www.berkeley.edu/
 [Opto]: https://optometry.berkeley.edu/ 
 [Neuro]: http://depts.washington.edu/neurogrd/
